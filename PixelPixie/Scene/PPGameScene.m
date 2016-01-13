@@ -85,10 +85,13 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         
         // 积分Node
         scoreNode = [[SKLabelNode alloc] init];
+        scoreNode.fontName = @"Mouse";
         scoreNode.fontColor = [UIColor blackColor];
+        scoreNode.fontSize = 20.0f;
         scoreNode.position = CGPointMake(GAME_AREA_WIDTH / 2, GAME_AREA_HEIGHT - 40);
         [self addChild:scoreNode];
         [self refreshScore];
+        
     }
     return self;
 }
