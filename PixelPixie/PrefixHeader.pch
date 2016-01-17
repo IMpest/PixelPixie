@@ -7,8 +7,11 @@
 #import "PPTutorScene.h"
 
 // Node
+#import "PPSpriteButton.h"
 #import "PPPixieNode.h"
 #import "PPTimeNode.h"
+#import "PPScoreNode.h"
+
 
 // Model
 #import "PPData.h"

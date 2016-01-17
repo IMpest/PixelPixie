@@ -10,10 +10,11 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface PPTimeNode : SKSpriteNode
-@property (nonatomic, assign) CGFloat time;
-@property (nonatomic, assign) CGFloat timeMax;
 
--(id)initWithTimeMax:(CGFloat)timeMax;
--(void)setTime:(CGFloat)time;
+@property (nonatomic, assign) NSDate * time;
+
+-(id)initWithTimeMax:(NSTimeInterval)timeInit;
+-(void)setTime:(NSDate *)currentTime;
+-(void)addTime:(NSTimeInterval)time;
 
 @end

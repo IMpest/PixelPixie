@@ -42,11 +42,11 @@
 		196AD34E1B6678AE000CB8F0 /* edge_top_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3221B6678AE000CB8F0 /* edge_top_00@2x.png */; };
 		196AD34F1B6678AE000CB8F0 /* edge_top_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3231B6678AE000CB8F0 /* edge_top_01@2x.png */; };
 		196AD3501B6678AE000CB8F0 /* icon_stone.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3241B6678AE000CB8F0 /* icon_stone.png */; };
-		196AD3511B6678AE000CB8F0 /* time_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3251B6678AE000CB8F0 /* time_02@2x.png */; };
-		196AD3521B6678AE000CB8F0 /* time_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3261B6678AE000CB8F0 /* time_01@2x.png */; };
+		196AD3511B6678AE000CB8F0 /* time_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3251B6678AE000CB8F0 /* time_icon@2x.png */; };
+		196AD3521B6678AE000CB8F0 /* time_holder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3261B6678AE000CB8F0 /* time_holder@2x.png */; };
 		196AD3541B6678AE000CB8F0 /* wall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3281B6678AE000CB8F0 /* wall@2x.png */; };
 		196AD3571B667E69000CB8F0 /* PPTimeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 196AD3561B667E69000CB8F0 /* PPTimeNode.m */; };
-		196AD3591B668A86000CB8F0 /* time_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3581B668A86000CB8F0 /* time_00@2x.png */; };
+		196AD3591B668A86000CB8F0 /* time_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196AD3581B668A86000CB8F0 /* time_line@2x.png */; };
 		1988309A1B90CEF10022B9AC /* fire_ball_000@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 198830631B90CEF10022B9AC /* fire_ball_000@2x.png */; };
 		1988309B1B90CEF10022B9AC /* fire_ball_001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 198830641B90CEF10022B9AC /* fire_ball_001@2x.png */; };
 		1988309C1B90CEF10022B9AC /* fire_ball_002@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 198830651B90CEF10022B9AC /* fire_ball_002@2x.png */; };
@@ -264,6 +264,7 @@
 		19D95C391BEC52C2006D9B7D /* water_stop_4_0_001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D95C371BEC52C2006D9B7D /* water_stop_4_0_001@2x.png */; };
 		19D95C3C1BEC5324006D9B7D /* water_eat_4_0_003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D95C3A1BEC5324006D9B7D /* water_eat_4_0_003@2x.png */; };
 		19D95C3D1BEC5324006D9B7D /* water_eat_4_0_004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D95C3B1BEC5324006D9B7D /* water_eat_4_0_004@2x.png */; };
+		19DD8A0D1C4BF8D9007BD59A /* PPScoreNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DD8A0C1C4BF8D9007BD59A /* PPScoreNode.m */; };
 		19E706AB1B3C51B90023D7E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E706AA1B3C51B90023D7E9 /* main.m */; };
 		19E706AE1B3C51B90023D7E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E706AD1B3C51B90023D7E9 /* AppDelegate.m */; };
 		19E706B61B3C51B90023D7E9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E706B51B3C51B90023D7E9 /* RootViewController.m */; };
@@ -316,12 +317,12 @@
 		196AD3221B6678AE000CB8F0 /* edge_top_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edge_top_00@2x.png"; sourceTree = "<group>"; };
 		196AD3231B6678AE000CB8F0 /* edge_top_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edge_top_01@2x.png"; sourceTree = "<group>"; };
 		196AD3241B6678AE000CB8F0 /* icon_stone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_stone.png; sourceTree = "<group>"; };
-		196AD3251B6678AE000CB8F0 /* time_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_02@2x.png"; sourceTree = "<group>"; };
-		196AD3261B6678AE000CB8F0 /* time_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_01@2x.png"; sourceTree = "<group>"; };
+		196AD3251B6678AE000CB8F0 /* time_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_icon@2x.png"; sourceTree = "<group>"; };
+		196AD3261B6678AE000CB8F0 /* time_holder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_holder@2x.png"; sourceTree = "<group>"; };
 		196AD3281B6678AE000CB8F0 /* wall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wall@2x.png"; sourceTree = "<group>"; };
 		196AD3551B667E69000CB8F0 /* PPTimeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTimeNode.h; sourceTree = "<group>"; };
 		196AD3561B667E69000CB8F0 /* PPTimeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTimeNode.m; sourceTree = "<group>"; };
-		196AD3581B668A86000CB8F0 /* time_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_00@2x.png"; sourceTree = "<group>"; };
+		196AD3581B668A86000CB8F0 /* time_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_line@2x.png"; sourceTree = "<group>"; };
 		198830631B90CEF10022B9AC /* fire_ball_000@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_ball_000@2x.png"; path = "fire/fire_ball_000@2x.png"; sourceTree = "<group>"; };
 		198830641B90CEF10022B9AC /* fire_ball_001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_ball_001@2x.png"; path = "fire/fire_ball_001@2x.png"; sourceTree = "<group>"; };
 		198830651B90CEF10022B9AC /* fire_ball_002@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fire_ball_002@2x.png"; path = "fire/fire_ball_002@2x.png"; sourceTree = "<group>"; };
@@ -539,6 +540,8 @@
 		19D95C371BEC52C2006D9B7D /* water_stop_4_0_001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_stop_4_0_001@2x.png"; path = "water/water_stop_4_0_001@2x.png"; sourceTree = "<group>"; };
 		19D95C3A1BEC5324006D9B7D /* water_eat_4_0_003@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_eat_4_0_003@2x.png"; path = "water/water_eat_4_0_003@2x.png"; sourceTree = "<group>"; };
 		19D95C3B1BEC5324006D9B7D /* water_eat_4_0_004@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water_eat_4_0_004@2x.png"; path = "water/water_eat_4_0_004@2x.png"; sourceTree = "<group>"; };
+		19DD8A0B1C4BF8D9007BD59A /* PPScoreNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPScoreNode.h; sourceTree = "<group>"; };
+		19DD8A0C1C4BF8D9007BD59A /* PPScoreNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPScoreNode.m; sourceTree = "<group>"; };
 		19E706A51B3C51B90023D7E9 /* PixelPixie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelPixie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E706A91B3C51B90023D7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19E706AA1B3C51B90023D7E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -717,9 +720,9 @@
 				196AD3221B6678AE000CB8F0 /* edge_top_00@2x.png */,
 				196AD3231B6678AE000CB8F0 /* edge_top_01@2x.png */,
 				196AD3241B6678AE000CB8F0 /* icon_stone.png */,
-				196AD3581B668A86000CB8F0 /* time_00@2x.png */,
-				196AD3261B6678AE000CB8F0 /* time_01@2x.png */,
-				196AD3251B6678AE000CB8F0 /* time_02@2x.png */,
+				196AD3581B668A86000CB8F0 /* time_line@2x.png */,
+				196AD3261B6678AE000CB8F0 /* time_holder@2x.png */,
+				196AD3251B6678AE000CB8F0 /* time_icon@2x.png */,
 				196AD3281B6678AE000CB8F0 /* wall@2x.png */,
 			);
 			path = Resource;
@@ -734,6 +737,8 @@
 				196AD3561B667E69000CB8F0 /* PPTimeNode.m */,
 				195CE8251B8630550065766F /* PPSpriteButton.h */,
 				195CE8261B8630550065766F /* PPSpriteButton.m */,
+				19DD8A0B1C4BF8D9007BD59A /* PPScoreNode.h */,
+				19DD8A0C1C4BF8D9007BD59A /* PPScoreNode.m */,
 			);
 			name = Node;
 			path = PixelPixie/Node;
@@ -1045,7 +1050,7 @@
 				1988309F1B90CEF10022B9AC /* fire_eat_2_0_000@2x.png in Resources */,
 				198830BB1B90CEF10022B9AC /* fire_fear_3_0_003@2x.png in Resources */,
 				1988318B1B90CF2F0022B9AC /* plant_fear_2_0_000@2x.png in Resources */,
-				196AD3511B6678AE000CB8F0 /* time_02@2x.png in Resources */,
+				196AD3511B6678AE000CB8F0 /* time_icon@2x.png in Resources */,
 				1988310E1B90CF170022B9AC /* water_eat_2_0_002@2x.png in Resources */,
 				198831841B90CF2F0022B9AC /* plant_eat_4_0_002@2x.png in Resources */,
 				198831171B90CF170022B9AC /* water_eat_4_0_001@2x.png in Resources */,
@@ -1202,7 +1207,7 @@
 				198831891B90CF2F0022B9AC /* plant_fear_1_0_003@2x.png in Resources */,
 				198831281B90CF170022B9AC /* water_fear_3_0_004@2x.png in Resources */,
 				198831351B90CF170022B9AC /* water_stop_3_0_002@2x.png in Resources */,
-				196AD3591B668A86000CB8F0 /* time_00@2x.png in Resources */,
+				196AD3591B668A86000CB8F0 /* time_line@2x.png in Resources */,
 				1988318C1B90CF2F0022B9AC /* plant_fear_2_0_001@2x.png in Resources */,
 				198831E31B90CF770022B9AC /* loading_5@2x.png in Resources */,
 				196AD32D1B6678AE000CB8F0 /* land_0100@2x.png in Resources */,
@@ -1253,7 +1258,7 @@
 				198831A71B90CF2F0022B9AC /* plant_stop_4_0_003@2x.png in Resources */,
 				1988318E1B90CF2F0022B9AC /* plant_fear_2_0_003@2x.png in Resources */,
 				198831EF1B90CF770022B9AC /* loading_17@2x.png in Resources */,
-				196AD3521B6678AE000CB8F0 /* time_01@2x.png in Resources */,
+				196AD3521B6678AE000CB8F0 /* time_holder@2x.png in Resources */,
 				193F53711B91B98700C6832D /* water_fear_1_0_000@2x.png in Resources */,
 				196AD3501B6678AE000CB8F0 /* icon_stone.png in Resources */,
 			);
@@ -1270,6 +1275,7 @@
 				195CE8271B8630550065766F /* PPSpriteButton.m in Sources */,
 				19E706B61B3C51B90023D7E9 /* RootViewController.m in Sources */,
 				196AD3571B667E69000CB8F0 /* PPTimeNode.m in Sources */,
+				19DD8A0D1C4BF8D9007BD59A /* PPScoreNode.m in Sources */,
 				1903AC6F1B47AC5500B81B1D /* PPNodeUtil.m in Sources */,
 				1946FE701B86320F00E33099 /* PPTutorScene.m in Sources */,
 				1946FE6E1B86320F00E33099 /* PPGameScene.m in Sources */,
@@ -1375,6 +1381,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.psycube.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
 			};
 			name = Debug;
 		};
@@ -1388,6 +1395,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.psycube.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
 			};
 			name = Release;
 		};

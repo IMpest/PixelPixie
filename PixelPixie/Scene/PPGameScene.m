@@ -12,8 +12,8 @@ PPPixieNode * pixieNode[MAX_ROW][MAX_COLUMN];
 PPPixieNode * pixieNodeTemp;
 
 SKSpriteNode * landNode[MAX_ROW][MAX_COLUMN];
-SKSpriteNode * timeNode;
-SKLabelNode * scoreNode;
+PPTimeNode * timeNode;
+PPScoreNode * scoreNode;
 
 int prevRow,  prevCol;
 int startRow, startCol;
@@ -82,12 +82,10 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         timeNode = [[PPTimeNode alloc] initWithTimeMax:300];
         timeNode.position = CGPointMake(4, 487);
         [self addChild:timeNode];
+        [timeNode setTime:[NSDate date]];
         
         // 积分Node
-        scoreNode = [[SKLabelNode alloc] init];
-        scoreNode.fontName = @"Mouse";
-        scoreNode.fontColor = [UIColor blackColor];
-        scoreNode.fontSize = 20.0f;
+        scoreNode = [[PPScoreNode alloc] init];
         scoreNode.position = CGPointMake(GAME_AREA_WIDTH / 2, GAME_AREA_HEIGHT - 40);
         [self addChild:scoreNode];
         [self refreshScore];
@@ -121,7 +119,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 -(void)refreshLandByRow:(int)row Col:(int)col
 {
-    if (landNode != nil)
+    if (landNode[row][col] != nil)
     {
         SKTexture * t = [SKTexture textureWithImageNamed:[PPDataUtil getPicByMap:[_data getLandByRow:row Col:col]]];
         [landNode[row][col] setTexture:t];
@@ -132,7 +130,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 {
     if (scoreNode != nil)
     {
-        scoreNode.text = [NSString stringWithFormat:@"%d", [_data getScore]];
+        scoreNode.text = [NSString stringWithFormat:@"%ld", (long)[_data getScore]];
     }
 }
 
