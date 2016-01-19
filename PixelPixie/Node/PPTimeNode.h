@@ -14,7 +14,11 @@
 @property (nonatomic, assign) NSDate * time;
 
 -(id)initWithTimeMax:(NSTimeInterval)timeInit;
--(void)setTime:(NSDate *)currentTime;
+
 -(void)addTime:(NSTimeInterval)time;
+
+-(void)refreshCurrentTime;
+
+-(NSTimeInterval)getLeftTime;
 
 @end

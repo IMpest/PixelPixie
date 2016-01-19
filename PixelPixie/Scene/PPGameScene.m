@@ -79,7 +79,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         }
         
         // 时间条
-        timeNode = [[PPTimeNode alloc] initWithTimeMax:300];
+        timeNode = [[PPTimeNode alloc] initWithTimeMax:60];
         timeNode.position = CGPointMake(4, 487);
         [self addChild:timeNode];
         [timeNode setTime:[NSDate date]];
@@ -133,6 +133,16 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         scoreNode.text = [NSString stringWithFormat:@"%ld", (long)[_data getScore]];
     }
 }
+
+
+#pragma mark Scene Lifecycle
+
+-(void)update:(NSTimeInterval)currentTime
+{
+    [super update:currentTime];
+    [timeNode refreshCurrentTime];
+}
+
 
 #pragma mark UIRepsond
 

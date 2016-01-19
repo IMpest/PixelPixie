@@ -17,8 +17,6 @@
 
 @implementation PPTimeNode
 
-
-
 -(id)initWithTimeMax:(NSTimeInterval)timeInit
 {
     if (self = [super init])
@@ -59,24 +57,38 @@
         startTime = [NSDate date];
         endTime = [NSDate dateWithTimeInterval:timeMax sinceDate:startTime];
         
-        [self setTime:startTime];
+        [self refreshCurrentTime];
     }
     return self;
 }
 
--(void)setTime:(NSDate *)currentTime
+-(void)addTime:(NSTimeInterval)addtionalTime
 {
-    [self refreshUI];
+    endTime = [NSDate dateWithTimeInterval:addtionalTime sinceDate:endTime];
+    [self refreshCurrentTime];
 }
 
--(void)addTime:(NSTimeInterval)time
+-(void)refreshCurrentTime
 {
-    
+    NSTimeInterval timeLeft = [self getLeftTime];
+    [self refreshUI:timeLeft / timeMax];
 }
 
--(void)refreshUI
+-(NSTimeInterval)getLeftTime
 {
-    [maskNode setSize:CGSizeMake(TIMELINE_WIDTH * 0.5f, TIMELINE_HEIGHT)];
+    return [endTime timeIntervalSinceDate:[NSDate date]];
+}
+
+-(void)refreshUI:(double)percentage
+{
+    if (percentage > 0)
+    {
+        [maskNode setSize:CGSizeMake(TIMELINE_WIDTH * percentage, TIMELINE_HEIGHT)];
+    }
+    else
+    {
+        [maskNode setSize:CGSizeZero];
+    }
 }
 
 @end
