@@ -79,7 +79,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         }
         
         // 时间条
-        timeNode = [[PPTimeNode alloc] initWithTimeMax:60];
+        timeNode = [[PPTimeNode alloc] initWithTimeMax:300];
         timeNode.position = CGPointMake(4, 487);
         [self addChild:timeNode];
         [timeNode setTime:[NSDate date]];
@@ -140,7 +140,16 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 -(void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
-    [timeNode refreshCurrentTime];
+    
+    if (_canPlay)
+    {
+        NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
+        if (timeLeft <= 0)
+        {
+            // TODO:结算
+            _canPlay = NO;
+        }
+    }
 }
 
 

@@ -53,25 +53,27 @@
         [self addChild:iconNode];
         
         timeMax = timeInit;
-        
-        startTime = [NSDate date];
-        endTime = [NSDate dateWithTimeInterval:timeMax sinceDate:startTime];
-        
-        [self refreshCurrentTime];
     }
     return self;
+}
+
+-(void)fireTimer
+{
+    startTime = [NSDate date];
+    endTime = [NSDate dateWithTimeInterval:timeMax sinceDate:startTime];
+    [self refreshCurrentTime];
 }
 
 -(void)addTime:(NSTimeInterval)addtionalTime
 {
     endTime = [NSDate dateWithTimeInterval:addtionalTime sinceDate:endTime];
-    [self refreshCurrentTime];
 }
 
--(void)refreshCurrentTime
+-(NSTimeInterval)refreshCurrentTime
 {
     NSTimeInterval timeLeft = [self getLeftTime];
     [self refreshUI:timeLeft / timeMax];
+    return timeLeft;
 }
 
 -(NSTimeInterval)getLeftTime

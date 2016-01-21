@@ -24,7 +24,7 @@
     skView.showsNodeCount = YES;
     skView.showsDrawCount = YES;
     
-    [skView presentScene:[PPSceneManager getGameScene]];
+    [skView presentScene:[PPSceneManager getTutorScene]];
     
     [self.view addSubview:skView];
 }

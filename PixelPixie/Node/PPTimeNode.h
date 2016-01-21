@@ -17,8 +17,6 @@
 
 -(void)addTime:(NSTimeInterval)time;
 
--(void)refreshCurrentTime;
-
--(NSTimeInterval)getLeftTime;
+-(NSTimeInterval)refreshCurrentTime;
 
 @end
