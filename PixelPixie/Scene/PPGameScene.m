@@ -134,25 +134,6 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }
 }
 
-
-#pragma mark Scene Lifecycle
-
--(void)update:(NSTimeInterval)currentTime
-{
-    [super update:currentTime];
-    
-    if (_canPlay)
-    {
-        NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
-        if (timeLeft <= 0)
-        {
-            // TODO:结算
-            _canPlay = NO;
-        }
-    }
-}
-
-
 #pragma mark UIRepsond
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -167,6 +148,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
     if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN) return;
     
+    
+    // 存储路径起点
     startRow = row;
     startCol = col;
     startPixie = [_data getPixieByRow:startRow Col:startCol];
@@ -177,6 +160,10 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     prevCol = col;
     
     combo = 0;
+    
+    routeRow[combo] = startRow;
+    routeCol[combo] = startCol;
+    combo ++;
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -273,7 +260,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     NSMutableArray * eatAction = [NSMutableArray array];
     [eatAction addObject:[SKAction moveTo:[PPNodeUtil getPointByRow:startRow Col:startCol] duration:0.0f]];
     
-    for (int i = 0; i < combo; i++)
+    for (int i = 1; i < combo; i++)
     {
         int eatRow = routeRow[i];
         int eatCol = routeCol[i];
@@ -283,7 +270,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         tpixie.status = PPStatusBall;
         [pixieNode[eatRow][eatCol] refresh];
         
-        // 添加动作
+        // 添加吃的子动作
         SKAction * tAniKill = [SKAction runBlock:^
                                {
                                    [pixieNode[eatRow][eatCol] clean];
@@ -308,26 +295,13 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     [pixieNodeTemp runAction:[SKAction sequence:eatAction] completion:^
     {
-        // 替身消失
-        [pixieNodeTemp removeFromParent];
-        
-        // 路径上的宠物重新生成
         PPPixie * tempPixie;
-        for (int i = 0; i < combo; i++)
-        {
-            tempPixie = [PPPixie getRandomPixie];
-            int tRow = routeRow[i];
-            int tCol = routeCol[i];
-            
-            [_data setPixie:tempPixie Row:tRow Col:tCol];
-            pixieNode[tRow][tCol].pixie = tempPixie;
-            [pixieNode[tRow][tCol] refresh];
-        }
         
         // 主身与目标位置替换
         int targetRow = routeRow[combo - 1];
         int targetCol = routeCol[combo - 1];
         
+        //
         tempPixie = [_data getPixieByRow:targetRow Col:targetCol];
         [_data setPixie:[_data getPixieByRow:startRow Col:startCol] Row:targetRow Col:targetCol];
         [_data setPixie:tempPixie Row:startRow Col:startCol];
@@ -336,7 +310,35 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         pixieNode[targetRow][targetCol].pixie = pixieNode[startRow][startCol].pixie;
         pixieNode[startRow][startCol].pixie = tempPixie;
         
+        [pixieNode[targetRow][targetCol] refresh];
         [pixieNode[startRow][startCol] refresh];
+        
+        // 替身消失
+        [pixieNodeTemp removeFromParent];
+        
+        // 路径上的宠物重新生成（不包括起点，但包括终点）
+        for (int i = 0; i < combo-1; i++)
+        {
+            tempPixie = [PPPixie getRandomPixie];
+            int tRow = routeRow[i];
+            int tCol = routeCol[i];
+            
+            [_data setPixie:tempPixie Row:tRow Col:tCol];
+            pixieNode[tRow][tCol].pixie = tempPixie;
+            [pixieNode[tRow][tCol] refresh];
+            
+            // 落下动画
+            PPPixieNode * tPixieNode = pixieNode[tRow][tCol];
+            tPixieNode.alpha = 0;
+            [tPixieNode runAction:[SKAction moveByX:0 y:100 duration:0.0f]];
+            
+            SKAction * drop = [SKAction group:
+                               @[[SKAction moveByX:0 y:-100 duration:0.3f],
+                                 [SKAction fadeAlphaTo:1.0f duration:0.3f]
+                                 ]];
+            drop.timingMode = SKActionTimingEaseIn;
+            [tPixieNode runAction:drop];
+        }
         
         // 主目标停吃+涨经验+升级
         PPPixie * targetPixie = pixieNode[targetRow][targetCol].pixie;
@@ -358,6 +360,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     if (!_canPlay) return;
 }
 
+#pragma mark Custom
+
 -(void)recoveyTouch
 {
     // 还原数据
@@ -371,5 +375,22 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     [_data clearLand];
     [self refreshAllLand];
 }
+
+#pragma mark Scene Lifecycle
+
+//-(void)update:(NSTimeInterval)currentTime
+//{
+//    [super update:currentTime];
+//    
+//    if (_canPlay)
+//    {
+//        NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
+//        if (timeLeft <= 0)
+//        {
+//            // TODO:结算
+//            _canPlay = NO;
+//        }
+//    }
+//}
 
 @end

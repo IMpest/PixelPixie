@@ -17,6 +17,7 @@
     return self;
 }
 
+// 更新图像
 -(void)refresh
 {
     self.alpha = 1.0f;
