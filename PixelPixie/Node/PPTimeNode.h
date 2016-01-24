@@ -15,6 +15,8 @@
 
 -(id)initWithTimeMax:(NSTimeInterval)timeInit;
 
+-(void)fireTimer;
+
 -(void)addTime:(NSTimeInterval)time;
 
 -(NSTimeInterval)refreshCurrentTime;

@@ -83,6 +83,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         timeNode.position = CGPointMake(4, 487);
         [self addChild:timeNode];
         [timeNode setTime:[NSDate date]];
+        [timeNode fireTimer];
         
         // 积分Node
         scoreNode = [[PPScoreNode alloc] init];
@@ -385,19 +386,19 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 #pragma mark Scene Lifecycle
 
-//-(void)update:(NSTimeInterval)currentTime
-//{
-//    [super update:currentTime];
-//    
-//    if (_canPlay)
-//    {
-//        NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
-//        if (timeLeft <= 0)
-//        {
-//            // TODO:结算
-//            _canPlay = NO;
-//        }
-//    }
-//}
+-(void)update:(NSTimeInterval)currentTime
+{
+    [super update:currentTime];
+    
+    if (_canPlay)
+    {
+        NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
+        if (timeLeft <= 0)
+        {
+            // TODO:结算
+            _canPlay = NO;
+        }
+    }
+}
 
 @end
