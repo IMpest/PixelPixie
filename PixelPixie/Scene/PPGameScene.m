@@ -19,7 +19,7 @@ int prevRow,  prevCol;
 int startRow, startCol;
 PPPixie * startPixie;
 
-int combo;
+int step;
 int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 -(id)init
@@ -159,11 +159,11 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     prevRow = row;
     prevCol = col;
     
-    combo = 0;
+    step = 0;
     
-    routeRow[combo] = startRow;
-    routeCol[combo] = startCol;
-    combo ++;
+    routeRow[step] = startRow;
+    routeCol[step] = startCol;
+    step ++;
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -193,7 +193,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     // 修改宠物状态
     curPixie.status = PPStatusFear;
-    [pixieNode[curRow][curCol] refresh];
+    [self refreshPixieAtRow:curRow Col:curCol];
     
     // 修改地面
     int prevLand = [_data getLandByRow:prevRow Col:prevCol];
@@ -236,9 +236,9 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         prevCol = curCol;
         
         // 存储路径
-        routeRow[combo] = curRow;
-        routeCol[combo] = curCol;
-        combo ++;
+        routeRow[step] = curRow;
+        routeCol[step] = curCol;
+        step ++;
     }
 }
 
@@ -250,9 +250,15 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     int row = [PPNodeUtil getRowByPostion:point];
     int col = [PPNodeUtil getColByPostion:point];
     
-    if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN || combo <= 0)
+    if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN || step <= 0)
     {
         [self recoveyTouch];
+        return;
+    }
+    
+    // 判断是否有
+    if (step <= 1)
+    {
         return;
     }
     
@@ -260,7 +266,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     NSMutableArray * eatAction = [NSMutableArray array];
     [eatAction addObject:[SKAction moveTo:[PPNodeUtil getPointByRow:startRow Col:startCol] duration:0.0f]];
     
-    for (int i = 1; i < combo; i++)
+    for (int i = 1; i < step; i++)
     {
         int eatRow = routeRow[i];
         int eatCol = routeCol[i];
@@ -268,7 +274,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         // 被吃的宠物变成球
         PPPixie * tpixie = [_data getPixieByRow:eatRow Col:eatCol];
         tpixie.status = PPStatusBall;
-        [pixieNode[eatRow][eatCol] refresh];
+        [self refreshPixieAtRow:eatRow Col:eatCol];
         
         // 添加吃的子动作
         SKAction * tAniKill = [SKAction runBlock:^
@@ -288,68 +294,63 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     [pixieNode[startRow][startCol] clean];
     
     // 替身开吃
+    startPixie.status = PPStatusEat;
     pixieNodeTemp = [[PPPixieNode alloc] initWithPixie:startPixie];
-    pixieNodeTemp.pixie.status = PPStatusEat;
-    [pixieNodeTemp refresh];
     [self addChild:pixieNodeTemp];
     
     [pixieNodeTemp runAction:[SKAction sequence:eatAction] completion:^
     {
+        startPixie.status = PPStatusStop;
         PPPixie * tempPixie;
         
         // 主身与目标位置替换
-        int targetRow = routeRow[combo - 1];
-        int targetCol = routeCol[combo - 1];
+        int targetRow = routeRow[step - 1];
+        int targetCol = routeCol[step - 1];
         
-        //
         tempPixie = [_data getPixieByRow:targetRow Col:targetCol];
         [_data setPixie:[_data getPixieByRow:startRow Col:startCol] Row:targetRow Col:targetCol];
         [_data setPixie:tempPixie Row:startRow Col:startCol];
         
-        tempPixie = pixieNode[targetRow][targetCol].pixie;
-        pixieNode[targetRow][targetCol].pixie = pixieNode[startRow][startCol].pixie;
-        pixieNode[startRow][startCol].pixie = tempPixie;
-        
-        [pixieNode[targetRow][targetCol] refresh];
-        [pixieNode[startRow][startCol] refresh];
+        [self refreshPixieAtRow:targetRow Col:targetCol];
+        [self refreshPixieAtRow:startRow Col:targetCol];
         
         // 替身消失
         [pixieNodeTemp removeFromParent];
         
-        // 路径上的宠物重新生成（不包括起点，但包括终点）
-        for (int i = 0; i < combo-1; i++)
+        // 路径上的宠物重新生成
+        for (int i = 0; i < step - 1; i++)
         {
             tempPixie = [PPPixie getRandomPixie];
             int tRow = routeRow[i];
             int tCol = routeCol[i];
             
             [_data setPixie:tempPixie Row:tRow Col:tCol];
-            pixieNode[tRow][tCol].pixie = tempPixie;
-            [pixieNode[tRow][tCol] refresh];
+            [self refreshPixieAtRow:tRow Col:tCol];
             
             // 落下动画
+            int dropHeight = 50;
             PPPixieNode * tPixieNode = pixieNode[tRow][tCol];
             tPixieNode.alpha = 0;
-            [tPixieNode runAction:[SKAction moveByX:0 y:100 duration:0.0f]];
-            
+            SKAction * high = [SKAction moveByX:0 y:dropHeight duration:0.0f];
             SKAction * drop = [SKAction group:
-                               @[[SKAction moveByX:0 y:-100 duration:0.3f],
-                                 [SKAction fadeAlphaTo:1.0f duration:0.3f]
+                               @[[SKAction moveByX:0 y:-dropHeight duration:0.2f],
+                                 [SKAction fadeAlphaTo:1 duration:0.2f]
                                  ]];
             drop.timingMode = SKActionTimingEaseIn;
-            [tPixieNode runAction:drop];
+            [tPixieNode runAction:[SKAction sequence:@[high, drop]]];
         }
         
         // 主目标停吃+涨经验+升级
-        PPPixie * targetPixie = pixieNode[targetRow][targetCol].pixie;
+        PPPixie * targetPixie = [_data getPixieByRow:targetRow Col:targetCol];;
         targetPixie.status = PPStatusStop;
         
-        for (int i = 0; i < combo; i++)
+        for (int i = 0; i < step; i++)
         {
             PPPixie * foodPixie = [_data getPixieByRow:routeRow[i] Col:routeCol[i]];
             [targetPixie eatPixie:foodPixie];
         }
-        [pixieNode[targetRow][targetCol] refresh];
+        
+        [self refreshPixieAtRow:targetRow Col:targetCol];
         
         [self recoveyTouch];
     }];
@@ -362,10 +363,16 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 #pragma mark Custom
 
+-(void)refreshPixieAtRow:(int)row Col:(int)col
+{
+    PPPixie * tempPixie = [_data getPixieByRow:row Col:col];
+    [pixieNode[row][col] refreshByPixie:tempPixie];
+}
+
 -(void)recoveyTouch
 {
     // 还原数据
-    combo = 0;
+    step = 0;
     
     // 清零开始坐标
     prevRow = -1;

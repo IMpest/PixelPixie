@@ -10,21 +10,20 @@
         self.size = CGSizeMake(BLOCK_WIDTH, BLOCK_HEIGHT);
         self.anchorPoint = CGPointMake(0.0f, 0.0f);
         self.color = [UIColor grayColor];
-        self.pixie = pixie;
         
-        [self refresh];
+        [self refreshByPixie:pixie];
     }
     return self;
 }
 
 // 更新图像
--(void)refresh
+-(void)refreshByPixie:(PPPixie *)pixie
 {
     self.alpha = 1.0f;
-    NSString * imageName = [PPDataUtil getPicByPixie:_pixie AndNumber:0];
+    NSString * imageName = [PPDataUtil getPicByPixie:pixie AndNumber:0];
     self.texture = [SKTexture textureWithImageNamed:imageName];
     
-    [self runAction:[PPNodeUtil getActionByPixie:_pixie]];
+    [self runAction:[PPNodeUtil getActionByPixie:pixie]];
 }
 
 -(void)clean
