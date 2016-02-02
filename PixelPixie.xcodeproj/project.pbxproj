@@ -931,10 +931,10 @@
 				19A38AA71C5D04B100B5F81A /* PPPixieNode.m */,
 				19A38AA81C5D04B100B5F81A /* PPScoreNode.h */,
 				19A38AA91C5D04B100B5F81A /* PPScoreNode.m */,
-				19A38AAA1C5D04B100B5F81A /* PPSpriteButton.h */,
-				19A38AAB1C5D04B100B5F81A /* PPSpriteButton.m */,
 				19A38AAC1C5D04B100B5F81A /* PPTimeNode.h */,
 				19A38AAD1C5D04B100B5F81A /* PPTimeNode.m */,
+				19A38AAA1C5D04B100B5F81A /* PPSpriteButton.h */,
+				19A38AAB1C5D04B100B5F81A /* PPSpriteButton.m */,
 			);
 			path = Node;
 			sourceTree = "<group>";

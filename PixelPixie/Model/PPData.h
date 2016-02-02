@@ -6,7 +6,7 @@
 @interface PPData : NSObject
 {
     NSInteger score;
-    CGFloat time;
+    NSInteger comboMax;
     
     NSInteger land[5][5];
     PPPixie * pixies[5][5];

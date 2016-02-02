@@ -17,6 +17,8 @@
 
 @implementation PPStartScene
 
+BOOL menuShown;
+
 -(id)init
 {
     if (self = [super init])
@@ -55,6 +57,8 @@
 
 -(void)playAction
 {
+    menuShown = NO;
+    
     [node runAction:[self getBackActionFrom:0 To:35] completion:^
      {
          [self showMenu];
@@ -63,6 +67,13 @@
 
 -(void)showMenu
 {
+    if (menuShown)
+    {
+        return;
+    }
+    
+    menuShown = YES;
+    
     int btnWidth = 200;
     int btnHeight = 50;
     UIColor * btnColorBack = [UIColor clearColor];
@@ -74,7 +85,7 @@
     PPSpriteButton * btStart = [PPSpriteButton buttonWithColor:btnColorBack andSize:CGSizeMake(btnWidth, btnHeight)];
     btStart.position = CGPointMake(GAME_AREA_WIDTH / 2, 75);
     btStart.alpha = 0;
-    [btStart setLabelWithText:@"START" withColor:btnColorText];
+    [btStart setLabelWithText:@"START GAME" withColor:btnColorText];
     [btStart addTarget:self selector:@selector(clickStart) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
     [self addChild:btStart];
     
