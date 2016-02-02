@@ -1,8 +1,16 @@
 
 #import "PPGameScene.h"
 
+typedef NS_ENUM(NSInteger, GameStatus)
+{
+    STATUS_READY,
+    STATUS_PLAY,
+    STATUS_PAUSE,
+    STATUS_END
+};
+
 @interface PPGameScene ()
-@property (nonatomic, assign) BOOL canPlay;
+@property (nonatomic, assign) GameStatus status;
 @property (nonatomic, strong) PPData * data;
 @end
 
@@ -29,7 +37,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 
         _data = [[PPData alloc] init];        
-        _canPlay = true;
+        _status = STATUS_PLAY;
         
         // 地板
         for (int i = 0; i < MAX_ROW; i++)
@@ -79,7 +87,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         }
         
         // 时间条
-        timeNode = [[PPTimeNode alloc] initWithTimeMax:300];
+        timeNode = [[PPTimeNode alloc] initWithTimeMax:TIME_MAX];
         timeNode.position = CGPointMake(4, 487);
         [self addChild:timeNode];
         [timeNode setTime:[NSDate date]];
@@ -92,15 +100,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         [self refreshScore];
         
         
-//        for(NSString *fontfamilyname in [UIFont familyNames])
-//        {
-//            NSLog(@"family:'%@'",fontfamilyname);
-//            for(NSString *fontName in [UIFont fontNamesForFamilyName:fontfamilyname])
-//            {
-//                NSLog(@"\tfont:'%@'",fontName);
-//            }
-//            NSLog(@"-------------");
-//        }
+
     }
     return self;
 }
@@ -149,7 +149,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (!_canPlay) return;
+    if (_status != STATUS_PLAY) return;
     
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInNode:self];
@@ -179,7 +179,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (!_canPlay) return;
+    if (_status != STATUS_PLAY) return;
     
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInNode:self];
@@ -369,7 +369,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (!_canPlay) return;
+    if (_status != STATUS_PLAY) return;
 }
 
 #pragma mark Custom
@@ -400,13 +400,13 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 {
     [super update:currentTime];
     
-    if (_canPlay)
+    if (_status == STATUS_PLAY)
     {
         NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
         if (timeLeft <= 0)
         {
             // TODO:结算
-            _canPlay = NO;
+            _status = STATUS_END;
         }
     }
 }

@@ -10,6 +10,7 @@
 
 static PPGameScene * gameScene;
 static PPTutorScene * tutorScene;
+static PPStartScene * startScene;
 
 @implementation PPSceneManager
 
@@ -31,6 +32,16 @@ static PPTutorScene * tutorScene;
         tutorScene.scaleMode = SKSceneScaleModeAspectFill;
     }
     return tutorScene;
+}
+
++(SKScene *)getStartScene
+{
+    if (startScene == nil)
+    {
+        startScene = [[PPStartScene alloc] init];
+        startScene.scaleMode = SKSceneScaleModeAspectFill;
+    }
+    return startScene;
 }
 
 @end

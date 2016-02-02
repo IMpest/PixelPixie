@@ -36,7 +36,7 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.view presentScene:[PPSceneManager getGameScene]];
+    [self.view presentScene:[PPSceneManager getStartScene]];
 }
 
 @end

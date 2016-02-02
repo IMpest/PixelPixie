@@ -41,7 +41,7 @@
     }
     else
     {
-        result = [NSString stringWithFormat:@"%@_%@_%d_%ld_00%d.png",
+        result = [NSString stringWithFormat:@"%@_%@_%ld_%ld_00%d.png",
                   [PPDataUtil strElement:pixie.element],
                   [PPDataUtil strStatus:pixie.status],
                   MIN(pixie.levelCur, MAX_LEVEL),

@@ -21,20 +21,17 @@
     
     self.view.backgroundColor = [UIColor redColor];
     
-    SKView * skView = [[SKView alloc] initWithFrame:self.view.bounds];
+    SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     skView.showsDrawCount = YES;
     
-    [skView presentScene:[PPSceneManager getGameScene]];
-    
-    [self.view addSubview:skView];
+    [skView presentScene:[PPSceneManager getTutorScene]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
 }
 
 - (BOOL)prefersStatusBarHidden
