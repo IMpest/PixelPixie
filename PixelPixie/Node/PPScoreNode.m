@@ -8,7 +8,7 @@
     {
         self.fontName = @"Mouse";
         self.fontColor = [UIColor blackColor];
-        self.fontSize = 20.0f;
+        self.fontSize = TEXT_SIZE;
     }
     return self;
 }

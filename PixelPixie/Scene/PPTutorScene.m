@@ -1,9 +1,9 @@
 //
-//  TutorScene.m
+//  PPTutorScene.m
 //  PixelPixie
 //
-//  Created by silver6wings on 15/7/16.
-//  Copyright (c) 2015年 silver6wings. All rights reserved.
+//  Created by silver6wings on 16/1/31.
+//  Copyright © 2016年 silver6wings. All rights reserved.
 //
 
 #import "PPTutorScene.h"
@@ -15,28 +15,24 @@
     if (self = [super init])
     {
         self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
+        self.backgroundColor = [UIColor yellowColor];
         
-        SKSpriteNode * node = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:self.frame.size];
-        node.position = CGPointMake(0, 0);
-        node.anchorPoint = CGPointMake(0, 0);
-        [self addChild:node];
+        SKSpriteNode * backNode = [[SKSpriteNode alloc] initWithColor:[UIColor grayColor] size:self.size];
+        backNode.anchorPoint = CGPointMake(0, 0);
+        [self addChild:backNode];
         
-        NSMutableArray * textureArray = [NSMutableArray array];
-        for (int i = 0; i < 53; i++)
-        {
-            NSString * name = [NSString stringWithFormat:@"loading_%d",i];
-            SKTexture * texture = [SKTexture textureWithImageNamed:name];
-            [textureArray addObject:texture];
-        }
-        SKAction * tAction = [SKAction animateWithTextures:textureArray timePerFrame:FRAME_SPEED resize:NO restore:NO];
-        [node runAction:tAction];
+        PPSpriteButton * btReady = [PPSpriteButton buttonWithColor:[UIColor blackColor] andSize:CGSizeMake(300, 100)];
+        btReady.position = CGPointMake(100, 100);
+        [btReady setLabelWithText:@"Ready!" withColor:[UIColor whiteColor]];
+        [btReady addTarget:self selector:@selector(btnDown) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
+        [self addChild:btReady];
     }
     return self;
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)btnDown
 {
-    [self.view presentScene:[PPSceneManager getStartScene]];
+    [self.view presentScene:[PPSceneManager getGameScene]];
 }
-
+    
 @end

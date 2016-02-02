@@ -25,7 +25,7 @@ typedef NS_OPTIONS(int, PPButtonControlEvent)
 -(void)removeAllTargets;
 
 // 改变LabelText方法
--(void)setLabelWithText:(NSString *)text andFont:(UIFont*)font withColor:(UIColor*)fontColor;
+-(void)setLabelWithText:(NSString *)text withColor:(UIColor*)fontColor;
 
 // 按钮点击变形方法
 -(void)transformForTouchDown;

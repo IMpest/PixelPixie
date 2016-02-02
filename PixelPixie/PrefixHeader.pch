@@ -50,6 +50,9 @@
 
 #define TIME_MAX 60
 
+#define TEXT_SIZE 20
+#define TEXT_FONT @"Mouse"
+
 #define FRAME_STATUS 5
 #define FRAME_SPEED 0.1f
 #define EAT_SPEED 0.5f

@@ -100,7 +100,7 @@
 #pragma mark - LABEL FOR BUTTON
 
 
--(void)setLabelWithText:(NSString *)text andFont:(UIFont *)font withColor:(UIColor*)fontColor
+-(void)setLabelWithText:(NSString *)text withColor:(UIColor*)fontColor
 {
     if (self.label == nil)
     {
@@ -117,11 +117,11 @@
         self.label.text = text;
     }
     
-    if (font != nil)
-    {
-        self.label.fontName = font.fontName;
-        self.label.fontSize = font.pointSize;
-    }
+//    if (font != nil)
+//    {
+        self.label.fontName = TEXT_FONT;
+        self.label.fontSize = TEXT_SIZE;
+//    }
     
     if (fontColor != nil)
     {
