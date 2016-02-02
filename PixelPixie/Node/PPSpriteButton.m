@@ -215,7 +215,7 @@
 -(void)transformForTouchDown
 {
     // You can define your custom transformation here.
-    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.5 duration:0]];
+//    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.5 duration:0]];
 }
 
 -(void)transformForTouchDrag
@@ -226,7 +226,7 @@
 -(void)transformForTouchUp
 {
     // You can define your custom transformation here.
-    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.0 duration:0]];
+//    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.0 duration:0]];
 }
 
 #pragma mark - TARGET/SELECTOR HANDLING

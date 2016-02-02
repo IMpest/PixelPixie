@@ -23,7 +23,7 @@
         
         PPSpriteButton * btReady = [PPSpriteButton buttonWithColor:[UIColor blackColor] andSize:CGSizeMake(300, 100)];
         btReady.position = CGPointMake(100, 100);
-        [btReady setLabelWithText:@"Ready!" withColor:[UIColor whiteColor]];
+        [btReady setLabelWithText:@"READY!" withColor:[UIColor whiteColor]];
         [btReady addTarget:self selector:@selector(btnDown) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
         [self addChild:btReady];
     }

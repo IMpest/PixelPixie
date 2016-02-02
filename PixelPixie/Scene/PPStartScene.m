@@ -27,33 +27,17 @@
         node.position = CGPointMake(0, 0);
         node.anchorPoint = CGPointMake(0, 0);
         [self addChild:node];
-        [self play];
+        [self playAction];
         
     }
     return self;
-}
-
--(void)play
-{
-    [node runAction:[self getBackActionFrom:0 To:52] completion:^
-        {
-            [self showMenu];
-        }];
-}
-
--(void)showMenu
-{
-    SKAction * back = [SKAction repeatAction:[self getBackActionFrom:36 To:52] count:3];
-    [node runAction:back];
-    
-    
 }
 
 -(SKAction *)getBackActionFrom:(int)beginFrame To:(int)endFrame
 {
     
     NSMutableArray * textureArray = [NSMutableArray array];
-    for (int i = beginFrame; i < endFrame - 1; i++)
+    for (int i = beginFrame; i <= endFrame; i++)
     {
         NSString * name = [NSString stringWithFormat:@"loading_%d",i];
         SKTexture * texture = [SKTexture textureWithImageNamed:name];
@@ -66,8 +50,73 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self showMenu];
+}
+
+-(void)playAction
+{
+    [node runAction:[self getBackActionFrom:0 To:35] completion:^
+     {
+         [self showMenu];
+     }];
+}
+
+-(void)showMenu
+{
+    int btnWidth = 200;
+    int btnHeight = 50;
+    UIColor * btnColorBack = [UIColor clearColor];
+    UIColor * btnColorText = [UIColor grayColor];
+    
+    SKAction * back = [SKAction repeatAction:[self getBackActionFrom:36 To:52] count:3];
+    [node runAction:back];
+    
+    PPSpriteButton * btStart = [PPSpriteButton buttonWithColor:btnColorBack andSize:CGSizeMake(btnWidth, btnHeight)];
+    btStart.position = CGPointMake(GAME_AREA_WIDTH / 2, 75);
+    btStart.alpha = 0;
+    [btStart setLabelWithText:@"START" withColor:btnColorText];
+    [btStart addTarget:self selector:@selector(clickStart) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
+    [self addChild:btStart];
+    
+    PPSpriteButton * btTutor = [PPSpriteButton buttonWithColor:btnColorBack andSize:CGSizeMake(btnWidth, btnHeight)];
+    btTutor.position = CGPointMake(GAME_AREA_WIDTH / 2, 425);
+    btTutor.alpha = 0;
+    [btTutor setLabelWithText:@"TUTORIAL" withColor:btnColorText];
+    [btTutor addTarget:self selector:@selector(clickTutor) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
+    [self addChild:btTutor];
+    
+    PPSpriteButton * btAbout = [PPSpriteButton buttonWithColor:btnColorBack andSize:CGSizeMake(btnWidth, btnHeight)];
+    btAbout.position = CGPointMake(GAME_AREA_WIDTH / 2, 500);
+    btAbout.alpha = 0;
+    [btAbout setLabelWithText:@"ABOUT US" withColor:btnColorText];
+    [btAbout addTarget:self selector:@selector(clickAbout) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
+    [self addChild:btAbout];
+    
+    SKAction * action1 = [SKAction sequence:@[[SKAction waitForDuration:0.1f],[SKAction fadeInWithDuration:0.5f]]];
+    [btStart runAction:action1];
+    
+    SKAction * action2 = [SKAction sequence:@[[SKAction waitForDuration:0.3f],[SKAction fadeInWithDuration:0.5f]]];
+    [btTutor runAction:action2];
+    
+    SKAction * action3 = [SKAction sequence:@[[SKAction waitForDuration:0.5f],[SKAction fadeInWithDuration:0.5f]]];
+    [btAbout runAction:action3];
+}
+
+-(void)clickStart
+{
     SKTransition * fade = [SKTransition fadeWithDuration:1];
     [self.view presentScene:[PPSceneManager getTutorScene] transition:fade];
 }
 
+-(void)clickTutor
+{
+    SKTransition * fade = [SKTransition fadeWithDuration:1];
+    [self.view presentScene:[PPSceneManager getTutorScene] transition:fade];
+}
+
+-(void)clickAbout
+{
+    SKTransition * fade = [SKTransition fadeWithDuration:1];
+    [self.view presentScene:[PPSceneManager getTutorScene] transition:fade];
+}
 @end
