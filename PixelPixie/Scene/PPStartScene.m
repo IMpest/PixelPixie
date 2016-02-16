@@ -128,6 +128,7 @@ BOOL menuShown;
 -(void)clickAbout
 {
     SKTransition * fade = [SKTransition fadeWithDuration:1];
-    [self.view presentScene:[PPSceneManager getTutorScene] transition:fade];
+    [self.view presentScene:[PPSceneManager getAboutScene] transition:fade];
 }
+
 @end

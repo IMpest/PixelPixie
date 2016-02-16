@@ -372,6 +372,24 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     if (_status != STATUS_PLAY) return;
 }
 
+#pragma mark Scene Lifecycle
+
+-(void)update:(NSTimeInterval)currentTime
+{
+    [super update:currentTime];
+    
+    if (_status == STATUS_PLAY)
+    {
+        NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
+        if (timeLeft <= 0)
+        {
+            // TODO:结算
+            _status = STATUS_END;
+            [self showAds];
+        }
+    }
+}
+
 #pragma mark Custom
 
 -(void)refreshPixieAtRow:(int)row Col:(int)col
@@ -394,21 +412,10 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     [self refreshAllLand];
 }
 
-#pragma mark Scene Lifecycle
-
--(void)update:(NSTimeInterval)currentTime
+-(void)showAds
 {
-    [super update:currentTime];
-    
-    if (_status == STATUS_PLAY)
-    {
-        NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
-        if (timeLeft <= 0)
-        {
-            // TODO:结算
-            _status = STATUS_END;
-        }
-    }
+    UIView * ads = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    [self.view addSubview:ads];
 }
 
 @end

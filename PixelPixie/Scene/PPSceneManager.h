@@ -11,4 +11,6 @@
 
 +(SKScene *)getStartScene;
 
++(SKScene *)getAboutScene;
+
 @end

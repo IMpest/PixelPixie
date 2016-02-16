@@ -948,10 +948,10 @@
 				19A38AB41C5D04B100B5F81A /* PPStartScene.m */,
 				1920C68D1C5E4CC800CCA493 /* PPTutorScene.h */,
 				1920C68E1C5E4CC800CCA493 /* PPTutorScene.m */,
-				19A38AAF1C5D04B100B5F81A /* PPGameScene.h */,
-				19A38AB01C5D04B100B5F81A /* PPGameScene.m */,
 				197309601C60CC7E0065D0FD /* PPAboutScene.h */,
 				197309611C60CC7E0065D0FD /* PPAboutScene.m */,
+				19A38AAF1C5D04B100B5F81A /* PPGameScene.h */,
+				19A38AB01C5D04B100B5F81A /* PPGameScene.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";

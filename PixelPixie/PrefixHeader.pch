@@ -6,6 +6,7 @@
 #import "PPGameScene.h"
 #import "PPTutorScene.h"
 #import "PPStartScene.h"
+#import "PPAboutScene.h"
 
 // Node
 #import "PPSpriteButton.h"

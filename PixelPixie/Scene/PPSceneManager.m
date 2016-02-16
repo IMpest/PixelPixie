@@ -8,9 +8,7 @@
 
 #import "PPSceneManager.h"
 
-static PPGameScene * gameScene;
-static PPTutorScene * tutorScene;
-static PPStartScene * startScene;
+static SKScene *gameScene, *tutorScene, *startScene, *aboutScene;
 
 @implementation PPSceneManager
 
@@ -42,6 +40,16 @@ static PPStartScene * startScene;
         startScene.scaleMode = SKSceneScaleModeAspectFill;
     }
     return startScene;
+}
+
++(SKScene *)getAboutScene
+{
+    if (aboutScene == nil)
+    {
+        aboutScene = [[PPAboutScene alloc] init];
+        aboutScene.scaleMode = SKSceneScaleModeAspectFill;
+    }
+    return aboutScene;
 }
 
 @end
