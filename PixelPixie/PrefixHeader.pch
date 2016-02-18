@@ -13,6 +13,7 @@
 #import "PPPixieNode.h"
 #import "PPTimeNode.h"
 #import "PPScoreNode.h"
+#import "PPStatNode.h"
 
 
 // Model
@@ -49,7 +50,7 @@
 #define DRC_DW 4
 #define DRC_LT 8
 
-#define TIME_MAX 60
+#define TIME_MAX 5
 
 #define TEXT_SIZE 20
 #define TEXT_FONT @"Mouse"

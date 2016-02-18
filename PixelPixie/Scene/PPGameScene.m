@@ -22,6 +22,7 @@ PPPixieNode * pixieNodeTemp;
 SKSpriteNode * landNode[MAX_ROW][MAX_COLUMN];
 PPTimeNode * timeNode;
 PPScoreNode * scoreNode;
+PPStatNode * statNode;
 
 int prevRow,  prevCol;
 int startRow, startCol;
@@ -385,6 +386,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         {
             // TODO:结算
             _status = STATUS_END;
+            [self showStat];
             [self showAds];
         }
     }
@@ -410,6 +412,13 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     // 清理地面
     [_data clearLand];
     [self refreshAllLand];
+}
+
+-(void)showStat
+{
+    statNode = [[PPStatNode alloc] initWithData:_data];
+    statNode.position = CGPointMake(GAME_AREA_WIDTH / 2, GAME_AREA_HEIGHT / 2);
+    [self addChild:statNode];
 }
 
 -(void)showAds
