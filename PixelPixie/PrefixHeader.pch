@@ -23,6 +23,7 @@
 // Util
 #import "PPDataUtil.h"
 #import "PPNodeUtil.h"
+#import "PPStorageUtil.h"
 
 #endif
 
@@ -50,7 +51,7 @@
 #define DRC_DW 4
 #define DRC_LT 8
 
-#define TIME_MAX 5
+#define TIME_MAX 50
 
 #define TEXT_SIZE 20
 #define TEXT_FONT @"Mouse"

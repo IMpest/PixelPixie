@@ -12,7 +12,7 @@ static NSUserDefaults * userDefaults;
 
 @implementation PPStorageUtil
 
--(NSUserDefaults *)getUserDefaults
++(NSUserDefaults *)getUserDefaults
 {
     if (userDefaults == nil)
     {
@@ -21,12 +21,12 @@ static NSUserDefaults * userDefaults;
     return userDefaults;
 }
 
--(void)setIntWithKey:(NSString *)key Value:(int)value
++(void)setIntWithKey:(NSString *)key Value:(int)value
 {
     [[self getUserDefaults] setInteger:value forKey:key];
 }
 
--(int)getIntWithKey:(NSString *)key Default:(int)def
++(int)getIntWithKey:(NSString *)key
 {
     NSInteger result = [[self getUserDefaults] integerForKey:key];
     return result;
