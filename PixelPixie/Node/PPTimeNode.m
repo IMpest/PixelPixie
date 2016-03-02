@@ -64,6 +64,11 @@
     [self refreshCurrentTime];
 }
 
+-(void)pauseTimer
+{
+    
+}
+
 -(void)addTime:(NSTimeInterval)addtionalTime
 {
     endTime = [NSDate dateWithTimeInterval:addtionalTime sinceDate:endTime];

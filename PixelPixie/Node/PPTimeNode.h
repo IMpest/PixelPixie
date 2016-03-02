@@ -10,6 +10,8 @@
 
 -(void)fireTimer;
 
+-(void)pauseTimer;
+
 -(void)addTime:(NSTimeInterval)time;
 
 -(NSTimeInterval)refreshCurrentTime;
