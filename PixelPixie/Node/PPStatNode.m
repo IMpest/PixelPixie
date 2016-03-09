@@ -18,6 +18,7 @@ PPSpriteButton * btAgain, * bt2Menu;
         btAgain = [PPSpriteButton buttonWithColor:[UIColor redColor] andSize:CGSizeMake(100, 50)];
         btAgain.position = CGPointMake(50, -70);
         [btAgain setLabelWithText:@"AGAIN" withColor:[UIColor whiteColor]];
+        [btAgain addTarget:self selector:@selector(clickAgain) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
         [self addChild:btAgain];
         
         bt2Menu = [PPSpriteButton buttonWithColor:[UIColor blueColor] andSize:CGSizeMake(100, 50)];
@@ -32,6 +33,12 @@ PPSpriteButton * btAgain, * bt2Menu;
 -(void)click2Menu
 {
     [PPSceneManager jumpFrom:parentScene To:[PPSceneManager getStartScene]];
+}
+
+-(void)clickAgain
+{
+    [PPSceneManager jumpFrom:parentScene To:[PPSceneManager getAnotherGameScene]];
+    
 }
 
 @end
