@@ -20,8 +20,7 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    SKTransition * fade = [SKTransition fadeWithDuration:1];
-    [self.view presentScene:[PPSceneManager getStartScene] transition:fade];
+    [PPSceneManager jumpFrom:self To:[PPSceneManager getStartScene]];
 }
 
 @end

@@ -25,7 +25,7 @@
 
 -(void)btnDown
 {
-    [self.view presentScene:[PPSceneManager getGameScene]];
+    [PPSceneManager jumpFrom:self To:[PPSceneManager getAnotherGameScene]];
 }
     
 @end

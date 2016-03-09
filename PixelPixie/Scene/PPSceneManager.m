@@ -1,17 +1,28 @@
 
 #import "PPSceneManager.h"
 
-static SKScene *gameScene, *tutorScene, *startScene, *aboutScene;
+static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene;
 
 @implementation PPSceneManager
 
-+(SKScene *)getGameScene
++(SKScene *)getCurrentGameScene
 {
     if (gameScene == nil)
     {
         gameScene = [[PPGameScene alloc] init];
         gameScene.scaleMode = SKSceneScaleModeAspectFill;
     }
+    return gameScene;
+}
+
++(SKScene *)getAnotherGameScene
+{
+    gameScenePrev = nil;
+    gameScenePrev = gameScene;
+    
+    gameScene = [[PPGameScene alloc] init];
+    gameScene.scaleMode = SKSceneScaleModeAspectFill;
+    
     return gameScene;
 }
 
@@ -43,6 +54,12 @@ static SKScene *gameScene, *tutorScene, *startScene, *aboutScene;
         aboutScene.scaleMode = SKSceneScaleModeAspectFill;
     }
     return aboutScene;
+}
+
++(void)jumpFrom:(SKScene *)originScene To:(SKScene *)targetScene
+{
+    SKTransition * fade = [SKTransition fadeWithDuration:1];
+    [originScene.view presentScene:targetScene transition:fade];
 }
 
 @end

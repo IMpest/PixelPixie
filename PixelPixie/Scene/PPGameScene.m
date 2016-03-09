@@ -416,7 +416,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 -(void)showStat
 {
-    statNode = [[PPStatNode alloc] initWithData:_data];
+    statNode = [[PPStatNode alloc] initWithScene:self Data:_data];
     statNode.position = CGPointMake(GAME_AREA_WIDTH / 2, GAME_AREA_HEIGHT / 2);
     [self addChild:statNode];
 }

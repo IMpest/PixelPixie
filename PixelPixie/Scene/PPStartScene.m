@@ -108,20 +108,17 @@ BOOL menuShown;
 
 -(void)clickStart
 {
-    SKTransition * fade = [SKTransition fadeWithDuration:1];
-    [self.view presentScene:[PPSceneManager getTutorScene] transition:fade];
+    [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
 }
 
 -(void)clickTutor
 {
-    SKTransition * fade = [SKTransition fadeWithDuration:1];
-    [self.view presentScene:[PPSceneManager getTutorScene] transition:fade];
+    [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
 }
 
 -(void)clickAbout
 {
-    SKTransition * fade = [SKTransition fadeWithDuration:1];
-    [self.view presentScene:[PPSceneManager getAboutScene] transition:fade];
+    [PPSceneManager jumpFrom:self To:[PPSceneManager getAboutScene]];
 }
 
 @end
