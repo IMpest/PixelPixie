@@ -12,7 +12,6 @@
     SKSpriteNode * backNode;
     SKCropNode * cropNode;
 }
-
 @end
 
 @implementation PPTimeNode

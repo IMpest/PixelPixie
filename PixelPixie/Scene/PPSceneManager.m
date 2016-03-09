@@ -1,10 +1,3 @@
-//
-//  SceneManager.m
-//  PixelPixie
-//
-//  Created by silver6wings on 15/8/10.
-//  Copyright (c) 2015年 silver6wings. All rights reserved.
-//
 
 #import "PPSceneManager.h"
 
