@@ -620,8 +620,8 @@
 		19A388921C5D02D100B5F81A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				19A388A01C5D02D100B5F81A /* Main.storyboard */,
 				19A388A31C5D02D100B5F81A /* Assets.xcassets */,
+				19A388A01C5D02D100B5F81A /* Main.storyboard */,
 				19A388A51C5D02D100B5F81A /* LaunchScreen.storyboard */,
 				19A388A81C5D02D100B5F81A /* Info.plist */,
 				19A388931C5D02D100B5F81A /* main.m */,

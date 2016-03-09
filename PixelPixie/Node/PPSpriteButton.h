@@ -1,5 +1,4 @@
 
-
 typedef NS_OPTIONS(int, PPButtonControlEvent)
 {
     PPButtonControlEventTouchDown = 1,

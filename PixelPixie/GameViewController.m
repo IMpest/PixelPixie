@@ -1,10 +1,3 @@
-//
-//  GameViewController.m
-//  PixelPixie
-//
-//  Created by silver6wings on 16/1/30.
-//  Copyright (c) 2016年 silver6wings. All rights reserved.
-//
 
 #import "GameViewController.h"
 
@@ -26,7 +19,7 @@
     skView.showsNodeCount = YES;
     skView.showsDrawCount = YES;
     
-    [skView presentScene:[PPSceneManager getStartScene]];
+    [skView presentScene:[PPSceneManager getStartScene]];    
 }
 
 - (void)didReceiveMemoryWarning
