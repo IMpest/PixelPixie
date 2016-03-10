@@ -92,7 +92,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         timeNode.position = CGPointMake(4, 487);
         [self addChild:timeNode];
         [timeNode setTime:[NSDate date]];
-        [timeNode fireTimer];
+        [timeNode startTimer];
         
         // 积分Node
         scoreNode = [[PPScoreNode alloc] init];
@@ -100,8 +100,6 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         [self addChild:scoreNode];
         [self refreshScore];
         
-        
-
     }
     return self;
 }
