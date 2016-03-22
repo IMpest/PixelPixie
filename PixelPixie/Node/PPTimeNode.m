@@ -3,8 +3,6 @@
 
 @interface PPTimeNode()
 {
-    NSTimeInterval timeMax;
-    
     NSDate * startTime;
     NSDate * endTime;
     
@@ -12,11 +10,15 @@
     SKSpriteNode * backNode;
     SKCropNode * cropNode;
 }
+
+@property (nonatomic, assign) BOOL isFired;
+@property (nonatomic, assign) NSTimeInterval timeMax;
+@property (nonatomic, assign) NSTimeInterval timeLeft;
 @end
 
 @implementation PPTimeNode
 
--(id)initWithTimeMax:(NSTimeInterval)timeInit
+-(id)initWithTimeMax:(NSTimeInterval)timeMax
 {
     if (self = [super init])
     {
@@ -51,21 +53,35 @@
         iconNode.position = CGPointMake(20, 7);
         [self addChild:iconNode];
         
-        timeMax = timeInit;
+        _isFired = NO;
+        _timeMax = timeMax;
+        _timeLeft = timeMax;
     }
     return self;
 }
 
--(void)fireTimer
+-(void)startTimer
 {
+    _isFired = YES;
+    [self resumeTimer];
+}
+
+-(void)resumeTimer
+{
+    _isFired = YES;
     startTime = [NSDate date];
-    endTime = [NSDate dateWithTimeInterval:timeMax sinceDate:startTime];
+    endTime = [NSDate dateWithTimeInterval:_timeLeft sinceDate:startTime];
     [self refreshCurrentTime];
 }
 
 -(void)pauseTimer
 {
-    
+    _isFired = NO;
+}
+
+-(void)stopTimer
+{
+    _isFired = NO;
 }
 
 -(void)addTime:(NSTimeInterval)addtionalTime
@@ -75,14 +91,12 @@
 
 -(NSTimeInterval)refreshCurrentTime
 {
-    NSTimeInterval timeLeft = [self getLeftTime];
-    [self refreshUI:timeLeft / timeMax];
-    return timeLeft;
-}
-
--(NSTimeInterval)getLeftTime
-{
-    return [endTime timeIntervalSinceDate:[NSDate date]];
+    if (_isFired)
+    {
+        _timeLeft = [endTime timeIntervalSinceDate:[NSDate date]];
+    }
+    [self refreshUI:_timeLeft / _timeMax];
+    return _timeLeft;
 }
 
 -(void)refreshUI:(double)percentage

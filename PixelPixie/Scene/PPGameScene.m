@@ -92,7 +92,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         timeNode.position = CGPointMake(4, 487);
         [self addChild:timeNode];
         [timeNode setTime:[NSDate date]];
-        [timeNode fireTimer];
+        [timeNode startTimer];
         
         // 积分Node
         scoreNode = [[PPScoreNode alloc] init];
@@ -100,8 +100,6 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         [self addChild:scoreNode];
         [self refreshScore];
         
-        
-
     }
     return self;
 }
@@ -159,6 +157,9 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     int col = [PPNodeUtil getColByPostion:point];
 
     if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN) return;
+    
+    // 暂停时间
+    [timeNode pauseTimer];
     
     
     // 存储路径起点
@@ -264,7 +265,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN || step <= 0)
     {
-        [self recoveyTouch];
+        [self clearPath];
         return;
     }
     
@@ -312,6 +313,10 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     [pixieNodeTemp runAction:[SKAction sequence:eatAction] completion:^
     {
+        // 重新开启时间
+        [timeNode resumeTimer];
+        
+        // 停止吃的动作
         startPixie.status = PPStatusStop;
         PPPixie * tempPixie;
         
@@ -352,7 +357,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             [tPixieNode runAction:[SKAction sequence:@[high, drop]]];
         }
         
-        // 主目标停吃+涨经验+升级
+        // 主目标停吃 + 涨经验 + 升级
         PPPixie * targetPixie = [_data getPixieByRow:targetRow Col:targetCol];;
         targetPixie.status = PPStatusStop;
         
@@ -364,7 +369,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         
         [self refreshPixieAtRow:targetRow Col:targetCol];
         
-        [self recoveyTouch];
+        [self clearPath];
     }];
 }
 
@@ -400,7 +405,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     [pixieNode[row][col] refreshByPixie:tempPixie];
 }
 
--(void)recoveyTouch
+// 清零路径数据
+-(void)clearPath
 {
     // 还原数据
     step = 0;
