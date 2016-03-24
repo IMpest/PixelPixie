@@ -84,9 +84,10 @@
     _isFired = NO;
 }
 
--(void)addTime:(NSTimeInterval)addtionalTime
+-(void)addTime:(NSTimeInterval)addSeconds
 {
-    endTime = [NSDate dateWithTimeInterval:addtionalTime sinceDate:endTime];
+    NSDate * targetTime = [NSDate dateWithTimeInterval:addSeconds sinceDate:endTime];
+    endTime = [targetTime earlierDate:[NSDate dateWithTimeInterval:_timeMax sinceDate:startTime]];
 }
 
 -(NSTimeInterval)refreshCurrentTime

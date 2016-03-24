@@ -366,9 +366,13 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             PPPixie * foodPixie = [_data getPixieByRow:routeRow[i] Col:routeCol[i]];
             [targetPixie eatPixie:foodPixie];
         }
-        
         [self refreshPixieAtRow:targetRow Col:targetCol];
         
+        // 增加奖励时间
+        NSTimeInterval bounsTime = 5;
+        [timeNode addTime:bounsTime];
+        
+        // 清空路径数据
         [self clearPath];
     }];
 }
