@@ -30,15 +30,13 @@ BOOL menuShown;
 
 -(SKAction *)getBackActionFrom:(int)beginFrame To:(int)endFrame
 {
-    
     NSMutableArray * textureArray = [NSMutableArray array];
     for (int i = beginFrame; i <= endFrame; i++)
     {
-        NSString * name = [NSString stringWithFormat:@"loading_%d",i];
+        NSString * name = [NSString stringWithFormat:@"loading_%02d",i];
         SKTexture * texture = [SKTexture textureWithImageNamed:name];
         [textureArray addObject:texture];
     }
-    
     SKAction * tAction = [SKAction animateWithTextures:textureArray timePerFrame:FRAME_SPEED resize:NO restore:NO];
     return tAction;
 }
