@@ -53,12 +53,14 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    UITouch * touch = [touches anyObject];
+    CGPoint point = [touch locationInNode:self];
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    
+    UITouch * touch = [touches anyObject];
+    CGPoint point = [touch locationInNode:self];
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
