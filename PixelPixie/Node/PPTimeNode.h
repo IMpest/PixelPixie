@@ -5,18 +5,18 @@
 
 @property (nonatomic, assign) NSDate * time;
 
--(id)initWithTimeMax:(NSTimeInterval)timeMax;
+- (id)initWithTimeMax:(NSTimeInterval)timeMax;
 
--(void)startTimer;
+- (void)startTimer;
 
--(void)resumeTimer;
+- (void)resumeTimer;
 
--(void)pauseTimer;
+- (void)pauseTimer;
 
--(void)stopTimer;
+- (void)stopTimer;
 
--(void)addTime:(NSTimeInterval)time;
+- (void)addTime:(NSTimeInterval)time;
 
--(NSTimeInterval)refreshCurrentTime;
+- (NSTimeInterval)refreshCurrentTime;
 
 @end

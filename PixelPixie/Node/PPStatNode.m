@@ -6,7 +6,7 @@
 SKScene * parentScene; // used for jump scene
 PPSpriteButton * btAgain, * bt2Menu;
 
--(id)initWithScene:(SKScene *)scene Data:(PPData *)data
+- (id)initWithScene:(SKScene *)scene Data:(PPData *)data
 {
     if (self = [super init])
     {
@@ -30,12 +30,12 @@ PPSpriteButton * btAgain, * bt2Menu;
     return self;
 }
 
--(void)click2Menu
+- (void)click2Menu
 {
     [PPSceneManager jumpFrom:parentScene To:[PPSceneManager getStartScene]];
 }
 
--(void)clickAgain
+- (void)clickAgain
 {
     [PPSceneManager jumpFrom:parentScene To:[PPSceneManager getAnotherGameScene]];
     

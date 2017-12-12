@@ -18,7 +18,7 @@
 
 @implementation PPTimeNode
 
--(id)initWithTimeMax:(NSTimeInterval)timeMax
+- (id)initWithTimeMax:(NSTimeInterval)timeMax
 {
     if (self = [super init])
     {
@@ -60,13 +60,13 @@
     return self;
 }
 
--(void)startTimer
+- (void)startTimer
 {
     _isFired = YES;
     [self resumeTimer];
 }
 
--(void)resumeTimer
+- (void)resumeTimer
 {
     _isFired = YES;
     startTime = [NSDate date];
@@ -74,23 +74,23 @@
     [self refreshCurrentTime];
 }
 
--(void)pauseTimer
+- (void)pauseTimer
 {
     _isFired = NO;
 }
 
--(void)stopTimer
+- (void)stopTimer
 {
     _isFired = NO;
 }
 
--(void)addTime:(NSTimeInterval)addSeconds
+- (void)addTime:(NSTimeInterval)addSeconds
 {
     NSDate * targetTime = [NSDate dateWithTimeInterval:addSeconds sinceDate:endTime];
     endTime = [targetTime earlierDate:[NSDate dateWithTimeInterval:_timeMax sinceDate:startTime]];
 }
 
--(NSTimeInterval)refreshCurrentTime
+- (NSTimeInterval)refreshCurrentTime
 {
     if (_isFired)
     {
@@ -100,7 +100,7 @@
     return _timeLeft;
 }
 
--(void)refreshUI:(double)percentage
+- (void)refreshUI:(double)percentage
 {
     if (percentage > 0)
     {

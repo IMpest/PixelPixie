@@ -3,7 +3,7 @@
 
 @implementation PPPixieNode
 
--(id)initWithPixie:(PPPixie *)pixie
+- (id)initWithPixie:(PPPixie *)pixie
 {
     if (self = [super init])
     {
@@ -17,7 +17,7 @@
 }
 
 // 更新图像
--(void)refreshByPixie:(PPPixie *)pixie
+- (void)refreshByPixie:(PPPixie *)pixie
 {
     self.alpha = 1.0f;
     NSString * imageName = [PPDataUtil getPicByPixie:pixie AndNumber:0];
@@ -26,7 +26,7 @@
     [self runAction:[PPNodeUtil getActionByPixie:pixie]];
 }
 
--(void)clean
+- (void)clean
 {
     self.alpha = 0.0f;
 }

@@ -5,7 +5,7 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
 
 @implementation PPSceneManager
 
-+(SKScene *)getCurrentGameScene
++ (SKScene *)getCurrentGameScene
 {
     if (gameScene == nil)
     {
@@ -15,7 +15,7 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
     return gameScene;
 }
 
-+(SKScene *)getAnotherGameScene
++ (SKScene *)getAnotherGameScene
 {
     gameScenePrev = nil;
     gameScenePrev = gameScene;
@@ -26,7 +26,7 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
     return gameScene;
 }
 
-+(SKScene *)getTutorScene
++ (SKScene *)getTutorScene
 {
     if (tutorScene == nil)
     {
@@ -36,7 +36,7 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
     return tutorScene;
 }
 
-+(SKScene *)getStartScene
++ (SKScene *)getStartScene
 {
     if (startScene == nil)
     {
@@ -46,7 +46,7 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
     return startScene;
 }
 
-+(SKScene *)getAboutScene
++ (SKScene *)getAboutScene
 {
     if (aboutScene == nil)
     {
@@ -56,7 +56,7 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
     return aboutScene;
 }
 
-+(void)jumpFrom:(SKScene *)originScene To:(SKScene *)targetScene
++ (void)jumpFrom:(SKScene *)originScene To:(SKScene *)targetScene
 {
     SKTransition * fade = [SKTransition fadeWithDuration:1];
     [originScene.view presentScene:targetScene transition:fade];

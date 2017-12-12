@@ -23,19 +23,23 @@ typedef NS_ENUM(int, Status)
 @property (nonatomic, assign) NSInteger levelCur;
 
 @property (nonatomic, assign) NSInteger expCur;
+
 @property (nonatomic, assign) NSInteger expMax;
 
 @property (nonatomic, assign) Element element;
+
 @property (nonatomic, assign) Status status;
 
 @property (nonatomic, assign) NSInteger skin;
 
++ (PPPixie *)getRandomPixie;
 
-+(PPPixie *)getRandomPixie;
-+(PPPixie *)clonePixie:(PPPixie *)pixie;
++ (PPPixie *)clonePixie:(PPPixie *)pixie;
 
--(id)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status;
--(void)eatPixie:(PPPixie *)foodPixie;
--(NSInteger)getBouns;
+- (id)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status;
+
+- (void)eatPixie:(PPPixie *)foodPixie;
+
+- (NSInteger)getBouns;
 
 @end

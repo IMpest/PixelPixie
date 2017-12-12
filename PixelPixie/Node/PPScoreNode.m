@@ -3,7 +3,7 @@
 
 @implementation PPScoreNode
 
--(instancetype)init
+- (instancetype)init
 {
     if (self = [super init])
     {
@@ -14,7 +14,7 @@
     return self;
 }
 
--(void)testFontFamily
+- (void)testFontFamily
 {
     for(NSString *fontfamilyname in [UIFont familyNames])
     {

@@ -4,7 +4,7 @@
 
 @implementation PPPixie
 
-+(PPPixie *)getRandomPixie
++ (PPPixie *)getRandomPixie
 {
     int level = 1 + (arc4random() % MAX_LEVEL_BEGIN);
     int element = 1 + (arc4random() % MAX_ELEMENT);
@@ -13,12 +13,12 @@
     return t;
 }
 
-+(PPPixie *)clonePixie:(PPPixie *)pixie
++ (PPPixie *)clonePixie:(PPPixie *)pixie
 {
     return [[PPPixie alloc] initWithLevel:pixie.levelCur AndElement:pixie.element AndStatus:pixie.status];
 }
 
--(id)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status
+- (id)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status
 {
     if (self = [super init])
     {
@@ -33,7 +33,7 @@
 }
 
 
--(void)eatPixie:(PPPixie *)foodPixie
+- (void)eatPixie:(PPPixie *)foodPixie
 {
     _expCur += [foodPixie getBouns];
     while (_expCur >= _expMax && self.levelCur < MAX_LEVEL)
@@ -45,12 +45,12 @@
     }
 }
 
--(NSInteger)getBouns
+- (NSInteger)getBouns
 {
     return self.levelCur * 2;
 }
 
--(NSInteger)getExpMax
+- (NSInteger)getExpMax
 {
     return powf(2, self.levelCur);
 }

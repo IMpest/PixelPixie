@@ -9,28 +9,28 @@
 
 #pragma mark - CLASS METHODS FOR INIT
 
-+(PPSpriteButton *)buttonWithImageNamed:(NSString *)image
++ (PPSpriteButton *)buttonWithImageNamed:(NSString *)image
 {
     PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithImageNamed:image];
     
     return newButton;
 }
 
-+(PPSpriteButton *)buttonWithColor:(UIColor *)color andSize:(CGSize)size
++ (PPSpriteButton *)buttonWithColor:(UIColor *)color andSize:(CGSize)size
 {
     PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithColor:color size:size];
     
     return newButton;
 }
 
-+(PPSpriteButton *)buttonWithTexture:(SKTexture *)texture andSize:(CGSize)size
++ (PPSpriteButton *)buttonWithTexture:(SKTexture *)texture andSize:(CGSize)size
 {
     PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithTexture:texture color:[UIColor whiteColor] size:size];
     
     return newButton;
 }
 
-+(PPSpriteButton *)buttonWithTexture:(SKTexture *)texture
++ (PPSpriteButton *)buttonWithTexture:(SKTexture *)texture
 {
     PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithTexture:texture];
     
@@ -39,7 +39,7 @@
 
 #pragma mark - INIT OVERRIDING
 
--(instancetype)initWithImageNamed:(NSString *)name
+- (instancetype)initWithImageNamed:(NSString *)name
 {
     if (self = [super initWithImageNamed:name])
     {
@@ -50,7 +50,7 @@
     
 }
 
--(instancetype)initWithColor:(UIColor *)color size:(CGSize)size
+- (instancetype)initWithColor:(UIColor *)color size:(CGSize)size
 {
     if (self = [super initWithColor:color size:size])
     {
@@ -60,7 +60,7 @@
     return self;
 }
 
--(instancetype)initWithTexture:(SKTexture *)texture color:(UIColor *)color size:(CGSize)size
+- (instancetype)initWithTexture:(SKTexture *)texture color:(UIColor *)color size:(CGSize)size
 {
     if (self = [super initWithTexture:texture color:color size:size])
     {
@@ -70,7 +70,7 @@
     return self;
 }
 
--(instancetype)initWithTexture:(SKTexture *)texture
+- (instancetype)initWithTexture:(SKTexture *)texture
 {
     if (self = [super initWithTexture:texture])
     {
@@ -79,7 +79,7 @@
     return self;
 }
 
--(id)init
+- (id)init
 {
     if (self = [super init])
     {
@@ -89,7 +89,7 @@
     return self;
 }
 
--(void)setBaseProperties
+- (void)setBaseProperties
 {
     self.userInteractionEnabled = YES;
     self.exclusiveTouch = YES;
@@ -100,7 +100,7 @@
 #pragma mark - LABEL FOR BUTTON
 
 
--(void)setLabelWithText:(NSString *)text withColor:(UIColor*)fontColor
+- (void)setLabelWithText:(NSString *)text withColor:(UIColor*)fontColor
 {
     if (self.label == nil)
     {
@@ -134,7 +134,7 @@
 
 #pragma mark - TOUCH DELEGATES
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.exclusiveTouch)
     {
@@ -155,7 +155,7 @@
     }
 }
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.exclusiveTouch)
     {
@@ -175,7 +175,7 @@
     }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.exclusiveTouch)
     {
@@ -196,7 +196,7 @@
     }
 }
 
--(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (self.exclusiveTouch)
     {
@@ -212,18 +212,18 @@
 
 #pragma mark - BUTTON TRANSFORM ON SELECTION
 
--(void)transformForTouchDown
+- (void)transformForTouchDown
 {
     // You can define your custom transformation here.
 //    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.5 duration:0]];
 }
 
--(void)transformForTouchDrag
+- (void)transformForTouchDrag
 {
     // You can define your custom transformation here.
 }
 
--(void)transformForTouchUp
+- (void)transformForTouchUp
 {
     // You can define your custom transformation here.
 //    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.0 duration:0]];
@@ -231,7 +231,7 @@
 
 #pragma mark - TARGET/SELECTOR HANDLING
 
--(void)addTarget:(id)target selector:(SEL)selector withObject:(id)object forControlEvent:(PPButtonControlEvent)controlEvent
+- (void)addTarget:(id)target selector:(SEL)selector withObject:(id)object forControlEvent:(PPButtonControlEvent)controlEvent
 {
     //check whether selector is already saved, otherwise it will get called twice
     
@@ -250,7 +250,7 @@
     [marrSelectors addObject:mdicSelector];
 }
 
--(void)removeTarget:(id)target selector:(SEL)selector forControlEvent:(PPButtonControlEvent)controlEvent
+- (void)removeTarget:(id)target selector:(SEL)selector forControlEvent:(PPButtonControlEvent)controlEvent
 {
     NSMutableArray *arrSelectors = [marrSelectors mutableCopy]; //Copied to prevent inconsistency
     
@@ -328,12 +328,12 @@
     marrSelectors = arrSelectors;
 }
 
--(void)removeAllTargets
+- (void)removeAllTargets
 {
     [marrSelectors removeAllObjects];
 }
 
--(void)controlEventOccured:(PPButtonControlEvent)controlEvent
+- (void)controlEventOccured:(PPButtonControlEvent)controlEvent
 {
     for (NSDictionary *dicSelector in marrSelectors)
     {

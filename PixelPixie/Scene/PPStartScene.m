@@ -12,7 +12,7 @@
 
 BOOL menuShown;
 
--(id)init
+- (id)init
 {
     if (self = [super init])
     {
@@ -28,7 +28,7 @@ BOOL menuShown;
     return self;
 }
 
--(SKAction *)getBackActionFrom:(int)beginFrame To:(int)endFrame
+- (SKAction *)getBackActionFrom:(int)beginFrame To:(int)endFrame
 {
     
     NSMutableArray * textureArray = [NSMutableArray array];
@@ -43,12 +43,12 @@ BOOL menuShown;
     return tAction;
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self showMenu];
 }
 
--(void)playAction
+- (void)playAction
 {
     menuShown = NO;
     
@@ -58,7 +58,7 @@ BOOL menuShown;
      }];
 }
 
--(void)showMenu
+- (void)showMenu
 {
     if (menuShown)
     {
@@ -106,17 +106,17 @@ BOOL menuShown;
     [btAbout runAction:action3];
 }
 
--(void)clickStart
+- (void)clickStart
 {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
 }
 
--(void)clickTutor
+- (void)clickTutor
 {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
 }
 
--(void)clickAbout
+- (void)clickAbout
 {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getAboutScene]];
 }

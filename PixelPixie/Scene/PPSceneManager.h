@@ -5,16 +5,16 @@
 
 @interface PPSceneManager : NSObject
 
-+(SKScene *)getCurrentGameScene;
++ (SKScene *)getCurrentGameScene;
 
-+(SKScene *)getAnotherGameScene;
++ (SKScene *)getAnotherGameScene;
 
-+(SKScene *)getTutorScene;
++ (SKScene *)getTutorScene;
 
-+(SKScene *)getStartScene;
++ (SKScene *)getStartScene;
 
-+(SKScene *)getAboutScene;
++ (SKScene *)getAboutScene;
 
-+(void)jumpFrom:(SKScene *)originScene To:(SKScene *)targetScene;
++ (void)jumpFrom:(SKScene *)originScene To:(SKScene *)targetScene;
 
 @end

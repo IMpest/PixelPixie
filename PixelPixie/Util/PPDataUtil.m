@@ -44,7 +44,7 @@
     return result;
 }
 
-+(NSString *)strElement:(Element)element
++ (NSString *)strElement:(Element)element
 {
     switch (element)
     {
@@ -59,7 +59,7 @@
     }
 }
 
-+(NSString *)strStatus:(Status)status
++ (NSString *)strStatus:(Status)status
 {
     switch (status)
     {

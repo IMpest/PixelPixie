@@ -22,7 +22,7 @@
     return (int)(pos.x/BLOCK_WIDTH);
 }
 
-+(CGPoint)getPointByRow:(int)row Col:(int)col
++ (CGPoint)getPointByRow:(int)row Col:(int)col
 {
     if (row < 0 || row > MAX_ROW ||
         col < 0 || row > MAX_COLUMN)

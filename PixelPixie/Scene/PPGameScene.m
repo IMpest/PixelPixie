@@ -31,7 +31,7 @@ PPPixie * startPixie;
 int step;
 int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
--(id)init
+- (id)init
 {
     if (self = [super init])
     {
@@ -104,7 +104,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     return self;
 }
 
--(void)initLand
+- (void)initLand
 {
     for (int i = 0; i < MAX_ROW; i++)
     {
@@ -116,7 +116,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }
 }
 
--(void)refreshAllLand
+- (void)refreshAllLand
 {
     for (int i = 0; i < MAX_ROW; i++)
     {
@@ -127,7 +127,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }
 }
 
--(void)refreshLandByRow:(int)row Col:(int)col
+- (void)refreshLandByRow:(int)row Col:(int)col
 {
     if (landNode[row][col] != nil)
     {
@@ -136,7 +136,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }
 }
 
--(void)refreshScore
+- (void)refreshScore
 {
     if (scoreNode != nil)
     {
@@ -146,7 +146,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 #pragma mark UIRepsond
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (_status != STATUS_PLAY) return;
     
@@ -179,7 +179,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     step ++;
 }
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (_status != STATUS_PLAY) return;
     
@@ -255,7 +255,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInNode:self];
@@ -377,14 +377,14 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }];
 }
 
--(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (_status != STATUS_PLAY) return;
 }
 
 #pragma mark Scene Lifecycle
 
--(void)update:(NSTimeInterval)currentTime
+- (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
     
@@ -403,14 +403,14 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 #pragma mark Custom
 
--(void)refreshPixieAtRow:(int)row Col:(int)col
+- (void)refreshPixieAtRow:(int)row Col:(int)col
 {
     PPPixie * tempPixie = [_data getPixieByRow:row Col:col];
     [pixieNode[row][col] refreshByPixie:tempPixie];
 }
 
 // 清零路径数据
--(void)clearPath
+- (void)clearPath
 {
     // 还原数据
     step = 0;
@@ -424,14 +424,14 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     [self refreshAllLand];
 }
 
--(void)showStat
+- (void)showStat
 {
     statNode = [[PPStatNode alloc] initWithScene:self Data:_data];
     statNode.position = CGPointMake(GAME_AREA_WIDTH / 2, GAME_AREA_HEIGHT / 2);
     [self addChild:statNode];
 }
 
--(void)showAds
+- (void)showAds
 {
     UIView * ads = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     [self.view addSubview:ads];

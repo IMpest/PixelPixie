@@ -3,7 +3,7 @@
 
 @implementation PPAboutScene
 
--(id)init
+- (id)init
 {
     if (self = [super init])
     {
@@ -18,7 +18,7 @@
     return self;
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getStartScene]];
 }

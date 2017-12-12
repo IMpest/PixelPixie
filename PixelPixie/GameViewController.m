@@ -3,7 +3,7 @@
 
 @implementation GameViewController
 
--(void)loadView
+- (void)loadView
 {
     [super loadView];
 }

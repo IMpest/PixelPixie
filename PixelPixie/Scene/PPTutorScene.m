@@ -3,7 +3,7 @@
 
 @implementation PPTutorScene
 
--(id)init
+- (id)init
 {
     if (self = [super init])
     {
@@ -23,7 +23,7 @@
     return self;
 }
 
--(void)btnDown
+- (void)btnDown
 {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getAnotherGameScene]];
 }

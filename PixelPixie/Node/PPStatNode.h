@@ -5,6 +5,6 @@
 
 @interface PPStatNode : SKSpriteNode
 
--(id)initWithScene:(SKScene *)scene Data:(PPData *)data;
+- (id)initWithScene:(SKScene *)scene Data:(PPData *)data;
 
 @end

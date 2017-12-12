@@ -6,8 +6,8 @@
 
 @interface PPStorageUtil : NSObject
 
-+(void)setIntWithKey:(NSString *)key Value:(int)value;
++ (void)setIntWithKey:(NSString *)key Value:(int)value;
 
-+(int)getIntWithKey:(NSString *)key;
++ (int)getIntWithKey:(NSString *)key;
 
 @end
