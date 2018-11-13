@@ -3,8 +3,7 @@
 
 @class PPPixie;
 
-@interface PPData : NSObject
-{
+@interface PPData : NSObject {
     NSInteger score;
     NSInteger scoreMax;
     NSInteger comboMax;

@@ -1,16 +1,14 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(int, Element)
-{
+typedef NS_ENUM(int, Element) {
     ElementNone = 0,
     ElementFire = 1,        // 火
     ElementWater = 2,       // 水
     ElementPlant = 3,       // 木
 };
 
-typedef NS_ENUM(int, Status)
-{
+typedef NS_ENUM(int, Status) {
     PPStatusNone = 0,
     PPStatusStop = 1,
     PPStatusEat = 2,
@@ -36,7 +34,7 @@ typedef NS_ENUM(int, Status)
 
 + (PPPixie *)clonePixie:(PPPixie *)pixie;
 
-- (id)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status;
+- (instancetype)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status;
 
 - (void)eatPixie:(PPPixie *)foodPixie;
 

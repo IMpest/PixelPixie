@@ -79,7 +79,7 @@
     return self;
 }
 
-- (id)init
+- (instancetype)init
 {
     if (self = [super init])
     {

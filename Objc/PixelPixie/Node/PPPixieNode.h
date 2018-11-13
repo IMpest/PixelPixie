@@ -5,7 +5,7 @@
 
 @interface PPPixieNode : SKSpriteNode
 
-- (id)initWithPixie:(PPPixie *)pixie;
+- (instancetype)initWithPixie:(PPPixie *)pixie;
 
 - (void)refreshByPixie:(PPPixie *)pixie;
 

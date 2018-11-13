@@ -17,7 +17,7 @@
 
 @implementation PPTimeNode
 
-- (id)initWithTimeMax:(NSTimeInterval)timeMax {
+- (instancetype)initWithTimeMax:(NSTimeInterval)timeMax {
     if (self = [super init]) {
         self.size = CGSizeMake(TIMEZONE_WIDTH, TIMEZONE_HEIGHT);
         self.anchorPoint = CGPointMake(0, 0);

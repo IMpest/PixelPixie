@@ -5,7 +5,7 @@
 
 @property (nonatomic, assign) NSDate * time;
 
-- (id)initWithTimeMax:(NSTimeInterval)timeMax;
+- (instancetype)initWithTimeMax:(NSTimeInterval)timeMax;
 
 - (void)startTimer;
 

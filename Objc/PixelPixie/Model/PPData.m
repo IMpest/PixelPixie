@@ -3,7 +3,7 @@
 
 @implementation PPData
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         [self clearAll];
         scoreMax = [PPStorageUtil getIntWithKey:CONST_KEY_MAX_SCORE];

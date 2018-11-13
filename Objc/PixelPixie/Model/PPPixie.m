@@ -16,7 +16,7 @@
     return [[PPPixie alloc] initWithLevel:pixie.levelCur AndElement:pixie.element AndStatus:pixie.status];
 }
 
-- (id)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status {
+- (instancetype)initWithLevel:(int)level AndElement:(Element)element AndStatus:(Status)status {
     if (self = [super init]) {
         self.levelCur = level;
         self.element = element;

@@ -31,7 +31,7 @@ PPPixie * startPixie;
 int step;
 int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
-- (id)init
+- (instancetype)init
 {
     if (self = [super init])
     {

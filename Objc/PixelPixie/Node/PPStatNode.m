@@ -6,7 +6,7 @@
 SKScene * parentScene; // used for jump scene
 PPSpriteButton * btAgain, * bt2Menu;
 
-- (id)initWithScene:(SKScene *)scene Data:(PPData *)data {
+- (instancetype)initWithScene:(SKScene *)scene Data:(PPData *)data {
     if (self = [super init]) {
         parentScene = scene;
         
