@@ -3,13 +3,11 @@
 
 @implementation GameViewController
 
-- (void)loadView
-{
+- (void)loadView {
     [super loadView];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor redColor];
@@ -22,13 +20,11 @@
     [skView presentScene:[PPSceneManager getStartScene]];    
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
+- (BOOL)prefersStatusBarHidden {
     return YES;
 }
 

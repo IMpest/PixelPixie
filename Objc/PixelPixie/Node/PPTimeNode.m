@@ -1,8 +1,7 @@
 
 #import "PPTimeNode.h"
 
-@interface PPTimeNode()
-{
+@interface PPTimeNode() {
     NSDate * startTime;
     NSDate * endTime;
     
@@ -18,10 +17,8 @@
 
 @implementation PPTimeNode
 
-- (id)initWithTimeMax:(NSTimeInterval)timeMax
-{
-    if (self = [super init])
-    {
+- (id)initWithTimeMax:(NSTimeInterval)timeMax {
+    if (self = [super init]) {
         self.size = CGSizeMake(TIMEZONE_WIDTH, TIMEZONE_HEIGHT);
         self.anchorPoint = CGPointMake(0, 0);
         
@@ -60,54 +57,43 @@
     return self;
 }
 
-- (void)startTimer
-{
+- (void)startTimer {
     _isFired = YES;
     [self resumeTimer];
 }
 
-- (void)resumeTimer
-{
+- (void)resumeTimer {
     _isFired = YES;
     startTime = [NSDate date];
     endTime = [NSDate dateWithTimeInterval:_timeLeft sinceDate:startTime];
     [self refreshCurrentTime];
 }
 
-- (void)pauseTimer
-{
+- (void)pauseTimer {
     _isFired = NO;
 }
 
-- (void)stopTimer
-{
+- (void)stopTimer {
     _isFired = NO;
 }
 
-- (void)addTime:(NSTimeInterval)addSeconds
-{
+- (void)addTime:(NSTimeInterval)addSeconds {
     NSDate * targetTime = [NSDate dateWithTimeInterval:addSeconds sinceDate:endTime];
     endTime = [targetTime earlierDate:[NSDate dateWithTimeInterval:_timeMax sinceDate:startTime]];
 }
 
-- (NSTimeInterval)refreshCurrentTime
-{
-    if (_isFired)
-    {
+- (NSTimeInterval)refreshCurrentTime {
+    if (_isFired) {
         _timeLeft = [endTime timeIntervalSinceDate:[NSDate date]];
     }
     [self refreshUI:_timeLeft / _timeMax];
     return _timeLeft;
 }
 
-- (void)refreshUI:(double)percentage
-{
-    if (percentage > 0)
-    {
+- (void)refreshUI:(double)percentage {
+    if (percentage > 0) {
         [maskNode setSize:CGSizeMake(TIMELINE_WIDTH * percentage, TIMELINE_HEIGHT)];
-    }
-    else
-    {
+    } else {
         [maskNode setSize:CGSizeZero];
     }
 }
