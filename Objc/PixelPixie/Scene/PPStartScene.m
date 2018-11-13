@@ -1,8 +1,7 @@
 
 #import "PPStartScene.h"
 
-@interface PPStartScene ()
-{
+@interface PPStartScene () {
     SKSpriteNode * node;
 }
 

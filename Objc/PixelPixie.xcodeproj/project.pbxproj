@@ -609,8 +609,8 @@
 				19A3889D1C5D02D100B5F81A /* GameViewController.h */,
 				19A3889E1C5D02D100B5F81A /* GameViewController.m */,
 				19A38AAE1C5D04B100B5F81A /* Scene */,
-				19A38AA01C5D04B100B5F81A /* Model */,
 				19A38AA51C5D04B100B5F81A /* Node */,
+				19A38AA01C5D04B100B5F81A /* Model */,
 				19A38AB51C5D04B100B5F81A /* Util */,
 				19A388921C5D02D100B5F81A /* Supporting Files */,
 			);
@@ -925,10 +925,10 @@
 		19A38AA01C5D04B100B5F81A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				19A38AA11C5D04B100B5F81A /* PPData.h */,
-				19A38AA21C5D04B100B5F81A /* PPData.m */,
 				19A38AA31C5D04B100B5F81A /* PPPixie.h */,
 				19A38AA41C5D04B100B5F81A /* PPPixie.m */,
+				19A38AA11C5D04B100B5F81A /* PPData.h */,
+				19A38AA21C5D04B100B5F81A /* PPData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";

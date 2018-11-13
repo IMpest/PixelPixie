@@ -1,8 +1,7 @@
 
 #import "PPGameScene.h"
 
-typedef NS_ENUM(NSInteger, GameStatus)
-{
+typedef NS_ENUM(NSInteger, GameStatus) {
     STATUS_READY,
     STATUS_PLAY,
     STATUS_PAUSE,

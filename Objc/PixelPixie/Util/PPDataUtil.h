@@ -1,6 +1,4 @@
 
-#import <Foundation/Foundation.h>
-
 @interface PPDataUtil : NSObject
 
 + (NSString *)getPicByMap:(int)map;

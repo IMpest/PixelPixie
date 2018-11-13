@@ -1,8 +1,4 @@
 
-#import <Foundation/Foundation.h>
-
-@class PPPixie;
-
 @interface PPData : NSObject {
     NSInteger score;
     NSInteger scoreMax;

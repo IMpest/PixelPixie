@@ -1,6 +1,4 @@
 
-#import <SpriteKit/SpriteKit.h>
-
 @interface PPTimeNode : SKSpriteNode
 
 @property (nonatomic, assign) NSDate * time;

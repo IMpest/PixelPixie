@@ -1,6 +1,4 @@
 
-#import <Foundation/Foundation.h>
-
 typedef NS_ENUM(int, Element) {
     ElementNone = 0,
     ElementFire = 1,        // 火

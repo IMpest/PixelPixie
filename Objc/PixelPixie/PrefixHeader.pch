@@ -1,16 +1,18 @@
 
 #ifdef __OBJC__
 
-// Model
-#import "PPData.h"
-#import "PPPixie.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <SpriteKit/SpriteKit.h>
 
-// Scene
-#import "PPGameScene.h"
-#import "PPTutorScene.h"
-#import "PPStartScene.h"
-#import "PPAboutScene.h"
-#import "PPSceneManager.h"
+// Model
+#import "PPPixie.h"
+#import "PPData.h"
+
+// Util
+#import "PPNodeUtil.h"
+#import "PPDataUtil.h"
+#import "PPStorageUtil.h"
 
 // Node
 #import "PPSpriteButton.h"
@@ -19,10 +21,12 @@
 #import "PPScoreNode.h"
 #import "PPStatNode.h"
 
-// Util
-#import "PPDataUtil.h"
-#import "PPNodeUtil.h"
-#import "PPStorageUtil.h"
+// Scene
+#import "PPGameScene.h"
+#import "PPTutorScene.h"
+#import "PPStartScene.h"
+#import "PPAboutScene.h"
+#import "PPSceneManager.h"
 
 #endif
 

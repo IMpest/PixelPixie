@@ -1,96 +1,73 @@
 
 #import "PPSpriteButton.h"
 
-@implementation PPSpriteButton
-{
+@implementation PPSpriteButton {
     UITouch * currentTouch;
     NSMutableArray *marrSelectors;
 }
 
 #pragma mark - CLASS METHODS FOR INIT
 
-+ (PPSpriteButton *)buttonWithImageNamed:(NSString *)image
-{
-    PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithImageNamed:image];
-    
++ (PPSpriteButton *)buttonWithImageNamed:(NSString *)image {
+    PPSpriteButton *newButton = [[PPSpriteButton alloc] initWithImageNamed:image];
     return newButton;
 }
 
-+ (PPSpriteButton *)buttonWithColor:(UIColor *)color andSize:(CGSize)size
-{
-    PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithColor:color size:size];
-    
++ (PPSpriteButton *)buttonWithColor:(UIColor *)color andSize:(CGSize)size {
+    PPSpriteButton *newButton = [[PPSpriteButton alloc] initWithColor:color size:size];
     return newButton;
 }
 
-+ (PPSpriteButton *)buttonWithTexture:(SKTexture *)texture andSize:(CGSize)size
-{
-    PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithTexture:texture color:[UIColor whiteColor] size:size];
-    
++ (PPSpriteButton *)buttonWithTexture:(SKTexture *)texture andSize:(CGSize)size{
+    PPSpriteButton *newButton = [[PPSpriteButton alloc] initWithTexture:texture
+                                                                  color:[UIColor whiteColor]
+                                                                   size:size];
     return newButton;
 }
 
-+ (PPSpriteButton *)buttonWithTexture:(SKTexture *)texture
-{
-    PPSpriteButton *newButton = [[PPSpriteButton alloc]initWithTexture:texture];
-    
++ (PPSpriteButton *)buttonWithTexture:(SKTexture *)texture {
+    PPSpriteButton *newButton = [[PPSpriteButton alloc] initWithTexture:texture];
     return newButton;
 }
 
 #pragma mark - INIT OVERRIDING
 
-- (instancetype)initWithImageNamed:(NSString *)name
-{
-    if (self = [super initWithImageNamed:name])
-    {
-        [self setBaseProperties];
-    }
-    
-    return self;
-    
-}
-
-- (instancetype)initWithColor:(UIColor *)color size:(CGSize)size
-{
-    if (self = [super initWithColor:color size:size])
-    {
-        [self setBaseProperties];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithTexture:(SKTexture *)texture color:(UIColor *)color size:(CGSize)size
-{
-    if (self = [super initWithTexture:texture color:color size:size])
-    {
-        [self setBaseProperties];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithTexture:(SKTexture *)texture
-{
-    if (self = [super initWithTexture:texture])
-    {
+- (instancetype)initWithImageNamed:(NSString *)name {
+    if (self = [super initWithImageNamed:name]) {
         [self setBaseProperties];
     }
     return self;
 }
 
-- (instancetype)init
-{
-    if (self = [super init])
-    {
+- (instancetype)initWithColor:(UIColor *)color size:(CGSize)size {
+    if (self = [super initWithColor:color size:size]) {
         [self setBaseProperties];
     }
-    
     return self;
 }
 
-- (void)setBaseProperties
-{
+- (instancetype)initWithTexture:(SKTexture *)texture color:(UIColor *)color size:(CGSize)size {
+    if (self = [super initWithTexture:texture color:color size:size]) {
+        [self setBaseProperties];
+    }
+    return self;
+}
+
+- (instancetype)initWithTexture:(SKTexture *)texture {
+    if (self = [super initWithTexture:texture]) {
+        [self setBaseProperties];
+    }
+    return self;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self setBaseProperties];
+    }
+    return self;
+}
+
+- (void)setBaseProperties {
     self.userInteractionEnabled = YES;
     self.exclusiveTouch = YES;
     
@@ -99,21 +76,14 @@
 
 #pragma mark - LABEL FOR BUTTON
 
-
-- (void)setLabelWithText:(NSString *)text withColor:(UIColor*)fontColor
-{
-    if (self.label == nil)
-    {
+- (void)setLabelWithText:(NSString *)text withColor:(UIColor*)fontColor {
+    if (self.label == nil) {
         self.label = [SKLabelNode node];
         self.label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-    }
-    else
-    {
+    } else {
         [self.label removeFromParent];
     }
-    
-    if (text != nil)
-    {
+    if (text != nil) {
         self.label.text = text;
     }
     
@@ -123,23 +93,17 @@
         self.label.fontSize = TEXT_SIZE;
 //    }
     
-    if (fontColor != nil)
-    {
+    if (fontColor != nil) {
         self.label.fontColor = fontColor;
     }
-    
     [self addChild:self.label];
-    
 }
 
 #pragma mark - TOUCH DELEGATES
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.exclusiveTouch)
-    {
-        if (currentTouch == nil)
-        {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.exclusiveTouch) {
+        if (currentTouch == nil) {
             currentTouch = [touches anyObject];
             
             [self controlEventOccured:PPButtonControlEventTouchDown];
@@ -147,116 +111,96 @@
             [self transformForTouchDown];
             
             //            [self.parent touchesBegan:touches withEvent:event];
-        }
-        else
-        {
-            //current touch occupied
+        } else {
+            // current touch occupied
         }
     }
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.exclusiveTouch)
-    {
-        if ([touches containsObject:currentTouch])
-        {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.exclusiveTouch) {
+        if ([touches containsObject:currentTouch]) {
             CGPoint touchPoint = [currentTouch locationInNode:self];
             float lenX = self.size.width / 2;
             float lenY = self.size.height / 2;
             
             //            [self.parent touchesMoved:touches withEvent:event];
             
-            if ((touchPoint.x > lenX + 10)|| (touchPoint.x < (-lenX - 10)) || (touchPoint.y > lenY + 10) || (touchPoint.y < (-lenY - 10)))
-            {
+            if ((touchPoint.x > lenX + 10)
+                || (touchPoint.x < (-lenX - 10))
+                || (touchPoint.y > lenY + 10)
+                || (touchPoint.y < (-lenY - 10))) {
                 [self touchesCancelled:touches withEvent:Nil];
             }
         }
     }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.exclusiveTouch)
-    {
-        if ([touches containsObject:currentTouch])
-        {
-            //touchupinside
-            
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.exclusiveTouch) {
+        if ([touches containsObject:currentTouch]) {
+            // touchup inside
             [self controlEventOccured:PPButtonControlEventTouchUp];
             [self controlEventOccured:PPButtonControlEventTouchUpInside];
             
-            currentTouch = Nil;
-            
+            currentTouch = nil;
             [self transformForTouchUp];
-            
             //            [self.parent touchesEnded:touches withEvent:event];
-            
         }
     }
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (self.exclusiveTouch)
-    {
-        if ([touches containsObject:currentTouch])
-        {
-            currentTouch = Nil;
-            
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (self.exclusiveTouch) {
+        if ([touches containsObject:currentTouch]) {
+            currentTouch = nil;
             [self transformForTouchUp];
-            
         }
     }
 }
 
 #pragma mark - BUTTON TRANSFORM ON SELECTION
 
-- (void)transformForTouchDown
-{
+- (void)transformForTouchDown {
     // You can define your custom transformation here.
 //    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.5 duration:0]];
 }
 
-- (void)transformForTouchDrag
-{
+- (void)transformForTouchDrag {
     // You can define your custom transformation here.
 }
 
-- (void)transformForTouchUp
-{
+- (void)transformForTouchUp {
     // You can define your custom transformation here.
 //    [self runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.0 duration:0]];
 }
 
 #pragma mark - TARGET/SELECTOR HANDLING
 
-- (void)addTarget:(id)target selector:(SEL)selector withObject:(id)object forControlEvent:(PPButtonControlEvent)controlEvent
-{
+- (void)addTarget:(id)target
+         selector:(SEL)selector
+       withObject:(id)object
+  forControlEvent:(PPButtonControlEvent)controlEvent {
     //check whether selector is already saved, otherwise it will get called twice
-    
     NSMutableDictionary * mdicSelector = [[NSMutableDictionary alloc]init];
     
     [mdicSelector setObject:target forKey:@"target"];
     [mdicSelector setObject:[NSValue valueWithPointer:selector] forKey:@"selector"];
     
-    if (object)
-    {
+    if (object) {
         [mdicSelector setObject:object forKey:@"object"];
     }
     
     [mdicSelector setObject:[NSNumber numberWithInt:controlEvent] forKey:@"controlEvent"];
-    
     [marrSelectors addObject:mdicSelector];
 }
 
-- (void)removeTarget:(id)target selector:(SEL)selector forControlEvent:(PPButtonControlEvent)controlEvent
-{
-    NSMutableArray *arrSelectors = [marrSelectors mutableCopy]; //Copied to prevent inconsistency
+- (void)removeTarget:(id)target
+            selector:(SEL)selector
+     forControlEvent:(PPButtonControlEvent)controlEvent {
     
-    for (int i = 0; i < [arrSelectors count]; i++)
-    {
-        
+    NSMutableArray *arrSelectors = [marrSelectors mutableCopy]; //Copied to prevent inconsistency
+    for (int i = 0; i < [arrSelectors count]; i++) {
         NSDictionary * dicSelector = [arrSelectors objectAtIndex: i];
         
         BOOL shouldRemove = NO;
@@ -269,76 +213,55 @@
         
         SEL selSelector = nil;
         
-        if (valSelector)
-        {
+        if (valSelector) {
             selSelector = [valSelector pointerValue];
         }
         
         PPButtonControlEvent selControlEvent = [[dicSelector objectForKey:@"controlEvent"]intValue];
         
-        if (target != nil)
-        {
-            if ([selTarget isEqual:target])
-            {
+        if (target != nil) {
+            if ([selTarget isEqual:target]) {
                 shouldCheckSelector = YES;
             }
-        }
-        else
-        {
+        } else {
             shouldCheckSelector = YES;
         }
         
-        if (shouldCheckSelector)
-        {
-            if (selector != nil)
-            {
-                if (selSelector == selector)
-                {
+        if (shouldCheckSelector) {
+            if (selector != nil) {
+                if (selSelector == selector) {
                     shouldCheckControlEvent = YES;
                 }
-            }
-            else
-            {
+            } else {
                 shouldCheckControlEvent = YES;
             }
         }
         
-        if (shouldCheckControlEvent)
-        {
-            if (controlEvent == PPButtonControlEventAllEvents)
-            {
+        if (shouldCheckControlEvent) {
+            if (controlEvent == PPButtonControlEventAllEvents) {
                 shouldRemove = YES;
-            }
-            else
-            {
-                if (selControlEvent == controlEvent)
-                {
+            } else {
+                if (selControlEvent == controlEvent) {
                     shouldRemove = YES;
                 }
             }
         }
         
-        if (shouldRemove)
-        {
+        if (shouldRemove) {
             [arrSelectors removeObject:dicSelector];
             i--; //To make sure the next item is checked
         }
     }
-    
     marrSelectors = arrSelectors;
 }
 
-- (void)removeAllTargets
-{
+- (void)removeAllTargets {
     [marrSelectors removeAllObjects];
 }
 
-- (void)controlEventOccured:(PPButtonControlEvent)controlEvent
-{
-    for (NSDictionary *dicSelector in marrSelectors)
-    {
-        if ([[dicSelector objectForKey:@"controlEvent"]intValue] == controlEvent)
-        {
+- (void)controlEventOccured:(PPButtonControlEvent)controlEvent {
+    for (NSDictionary *dicSelector in marrSelectors) {
+        if ([[dicSelector objectForKey:@"controlEvent"]intValue] == controlEvent) {
             id target = [dicSelector objectForKey:@"target"];
             
             SEL selector = [[dicSelector objectForKey:@"selector"]pointerValue];
@@ -351,20 +274,15 @@
             
             IMP imp = [target methodForSelector:selector];
             
-            if (object)
-            {
+            if (object) {
                 void (*func)(id, SEL, id) = (void*)imp;
                 func (target, selector, object);
-            }
-            else
-            {
+            } else {
                 void (*func)(id, SEL) = (void *)imp;
                 func(target, selector);
             }
         }
     }
 }
-
-
 
 @end
