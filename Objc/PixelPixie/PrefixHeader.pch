@@ -1,12 +1,16 @@
 
 #ifdef __OBJC__
 
+// Model
+#import "PPData.h"
+#import "PPPixie.h"
+
 // Scene
-#import "PPSceneManager.h"
 #import "PPGameScene.h"
 #import "PPTutorScene.h"
 #import "PPStartScene.h"
 #import "PPAboutScene.h"
+#import "PPSceneManager.h"
 
 // Node
 #import "PPSpriteButton.h"
@@ -14,11 +18,6 @@
 #import "PPTimeNode.h"
 #import "PPScoreNode.h"
 #import "PPStatNode.h"
-
-
-// Model
-#import "PPData.h"
-#import "PPPixie.h"
 
 // Util
 #import "PPDataUtil.h"
