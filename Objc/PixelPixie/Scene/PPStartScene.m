@@ -11,10 +11,8 @@
 
 BOOL menuShown;
 
-- (instancetype)init
-{
-    if (self = [super init])
-    {
+- (instancetype)init {
+    if (self = [super init]) {
         self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
         
         node = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:self.frame.size];
@@ -27,12 +25,10 @@ BOOL menuShown;
     return self;
 }
 
-- (SKAction *)getBackActionFrom:(int)beginFrame To:(int)endFrame
-{
+- (SKAction *)getBackActionFrom:(int)beginFrame To:(int)endFrame {
     
     NSMutableArray * textureArray = [NSMutableArray array];
-    for (int i = beginFrame; i <= endFrame; i++)
-    {
+    for (int i = beginFrame; i <= endFrame; i++) {
         NSString * name = [NSString stringWithFormat:@"loading_%d",i];
         SKTexture * texture = [SKTexture textureWithImageNamed:name];
         [textureArray addObject:texture];
@@ -42,25 +38,20 @@ BOOL menuShown;
     return tAction;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [self showMenu];
 }
 
-- (void)playAction
-{
+- (void)playAction {
     menuShown = NO;
     
-    [node runAction:[self getBackActionFrom:0 To:35] completion:^
-     {
-         [self showMenu];
-     }];
+    [node runAction:[self getBackActionFrom:0 To:35] completion:^{
+        [self showMenu];
+    }];
 }
 
-- (void)showMenu
-{
-    if (menuShown)
-    {
+- (void)showMenu {
+    if (menuShown) {
         return;
     }
     
@@ -105,18 +96,15 @@ BOOL menuShown;
     [btAbout runAction:action3];
 }
 
-- (void)clickStart
-{
+- (void)clickStart {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
 }
 
-- (void)clickTutor
-{
+- (void)clickTutor {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
 }
 
-- (void)clickAbout
-{
+- (void)clickAbout {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getAboutScene]];
 }
 

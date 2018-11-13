@@ -3,10 +3,8 @@
 
 @implementation PPTutorScene
 
-- (instancetype)init
-{
-    if (self = [super init])
-    {
+- (instancetype)init {
+    if (self = [super init]) {
         self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
         self.backgroundColor = [UIColor yellowColor];
         
@@ -23,8 +21,7 @@
     return self;
 }
 
-- (void)btnDown
-{
+- (void)btnDown {
     [PPSceneManager jumpFrom:self To:[PPSceneManager getAnotherGameScene]];
 }
     

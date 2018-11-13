@@ -30,20 +30,16 @@ PPPixie * startPixie;
 int step;
 int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
-- (instancetype)init
-{
-    if (self = [super init])
-    {
+- (instancetype)init {
+    if (self = [super init]) {
         self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 
         _data = [[PPData alloc] init];        
         _status = STATUS_PLAY;
         
         // 地板
-        for (int i = 0; i < MAX_ROW; i++)
-        {
-            for (int j = 0; j < MAX_COLUMN; j++)
-            {
+        for (int i = 0; i < MAX_ROW; i++) {
+            for (int j = 0; j < MAX_COLUMN; j++) {
                 landNode[i][j] = [SKSpriteNode spriteNodeWithImageNamed:[PPDataUtil getPicByMap:[_data getLandByRow:i Col:j]]];
                 [landNode[i][j] setPosition:[PPNodeUtil getNodePositionByRow:i COL:j]];
                 [landNode[i][j] setSize:CGSizeMake(BLOCK_WIDTH, BLOCK_HEIGHT)];
@@ -53,10 +49,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         }
         
         // 上下边界
-        for (int i = 0; i < 2; i++)
-        {
-            for (int j = 0; j < MAX_COLUMN; j++)
-            {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < MAX_COLUMN; j++) {
                 NSString * top = [NSString stringWithFormat:@"edge_top_0%d", i];
                 
                 SKSpriteNode * wall = [SKSpriteNode spriteNodeWithImageNamed:top];
@@ -76,10 +70,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         }
         
         // 宠物Node
-        for (int i = 0; i < MAX_ROW; i++)
-        {
-            for (int j = 0; j < MAX_COLUMN; j++)
-            {
+        for (int i = 0; i < MAX_ROW; i++) {
+            for (int j = 0; j < MAX_COLUMN; j++) {
                 pixieNode[i][j] = [[PPPixieNode alloc] initWithPixie:[_data getPixieByRow:i Col:j]];
                 [pixieNode[i][j] setPosition:[PPNodeUtil getNodePositionByRow:i COL:j]];
                 [self addChild:pixieNode[i][j]];
@@ -103,50 +95,39 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     return self;
 }
 
-- (void)initLand
-{
-    for (int i = 0; i < MAX_ROW; i++)
-    {
-        for (int j = 0; j < MAX_COLUMN; j++)
-        {
+- (void)initLand {
+    for (int i = 0; i < MAX_ROW; i++) {
+        for (int j = 0; j < MAX_COLUMN; j++) {
             [_data getLandByRow:i Col:j];
             landNode[i][j] = [SKSpriteNode spriteNodeWithImageNamed:[PPDataUtil getPicByMap:[_data getLandByRow:i Col:j]]];
         }
     }
 }
 
-- (void)refreshAllLand
-{
-    for (int i = 0; i < MAX_ROW; i++)
-    {
-        for (int j = 0; j < MAX_COLUMN; j++)
-        {
+- (void)refreshAllLand {
+    for (int i = 0; i < MAX_ROW; i++) {
+        for (int j = 0; j < MAX_COLUMN; j++) {
             [self refreshLandByRow:i Col:j];
         }
     }
 }
 
-- (void)refreshLandByRow:(int)row Col:(int)col
-{
-    if (landNode[row][col] != nil)
-    {
+- (void)refreshLandByRow:(int)row Col:(int)col {
+    if (landNode[row][col] != nil) {
         SKTexture * t = [SKTexture textureWithImageNamed:[PPDataUtil getPicByMap:[_data getLandByRow:row Col:col]]];
         [landNode[row][col] setTexture:t];
     }
 }
 
-- (void)refreshScore
-{
-    if (scoreNode != nil)
-    {
+- (void)refreshScore {
+    if (scoreNode != nil) {
         scoreNode.text = [NSString stringWithFormat:@"%ld", (long)[_data getScore]];
     }
 }
 
 #pragma mark UIRepsond
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_status != STATUS_PLAY) return;
     
     UITouch * touch = [touches anyObject];
@@ -178,8 +159,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     step ++;
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_status != STATUS_PLAY) return;
     
     UITouch * touch = [touches anyObject];
@@ -190,8 +170,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     if (curRow < 0 || curRow > MAX_ROW ||
         curCol < 0 || curCol > MAX_COLUMN ||
-        abs(curRow - prevRow) + abs(curCol - prevCol) > 1)
-    {
+        abs(curRow - prevRow) + abs(curCol - prevCol) > 1) {
         return;
     }
     
@@ -209,30 +188,26 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     // 修改地面
     int prevLand = [_data getLandByRow:prevRow Col:prevCol];
-    if (prevLand >= 0)
-    {
-        if (curRow == prevRow) // 同一行
-        {
-            if (curCol < prevCol) // 向左滑
-            {
+    if (prevLand >= 0) {
+        if (curRow == prevRow) {
+            // 同一行
+            if (curCol < prevCol) {
+                // 向左滑
                 curLand += DRC_RT;
                 prevLand += DRC_LT;
-            }
-            else if (curCol > prevCol) // 向右滑
-            {
+            } else if (curCol > prevCol) {
+                // 向右滑
                 curLand += DRC_LT;
                 prevLand += DRC_RT;
             }
-        }
-        else if (curCol == prevCol)  // 同一列
-        {
-            if (curRow < prevRow) // 向上滑
-            {
+        } else if (curCol == prevCol) {
+            // 同一列
+            if (curRow < prevRow) {
+                // 向上滑
                 curLand += DRC_DW;
                 prevLand += DRC_UP;
-            }
-            else if (curRow > prevRow) // 向下滑
-            {
+            } else if (curRow > prevRow){
+                // 向下滑
                 curLand += DRC_UP;
                 prevLand += DRC_DW;
             }
@@ -254,23 +229,20 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInNode:self];
     
     int row = [PPNodeUtil getRowByPostion:point];
     int col = [PPNodeUtil getColByPostion:point];
     
-    if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN || step <= 0)
-    {
+    if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN || step <= 0) {
         [self clearPath];
         return;
     }
     
     // 判断是否有
-    if (step <= 1)
-    {
+    if (step <= 1) {
         return;
     }
     
@@ -278,8 +250,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     NSMutableArray * eatAction = [NSMutableArray array];
     [eatAction addObject:[SKAction moveTo:[PPNodeUtil getPointByRow:startRow Col:startCol] duration:0.0f]];
     
-    for (int i = 1; i < step; i++)
-    {
+    for (int i = 1; i < step; i++) {
         int eatRow = routeRow[i];
         int eatCol = routeCol[i];
         
@@ -289,13 +260,11 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         [self refreshPixieAtRow:eatRow Col:eatCol];
         
         // 添加吃的子动作
-        SKAction * tAniKill = [SKAction runBlock:^
-                               {
-                                   [pixieNode[eatRow][eatCol] clean];
-                                   [_data addScore:tpixie];
-                                   [self refreshScore];
-                               }];
-        
+        SKAction * tAniKill = [SKAction runBlock:^{
+            [pixieNode[eatRow][eatCol] clean];
+            [_data addScore:tpixie];
+            [self refreshScore];
+        }];
         SKAction * tAniMove = [SKAction moveTo:[PPNodeUtil getPointByRow:eatRow Col:eatCol] duration:EAT_SPEED];
         
         [eatAction addObject:tAniKill];
@@ -310,8 +279,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     pixieNodeTemp = [[PPPixieNode alloc] initWithPixie:startPixie];
     [self addChild:pixieNodeTemp];
     
-    [pixieNodeTemp runAction:[SKAction sequence:eatAction] completion:^
-    {
+    [pixieNodeTemp runAction:[SKAction sequence:eatAction] completion:^{
         // 重新开启时间
         [timeNode resumeTimer];
         
@@ -334,8 +302,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         [pixieNodeTemp removeFromParent];
         
         // 路径上的宠物重新生成
-        for (int i = 0; i < step - 1; i++)
-        {
+        for (int i = 0; i < step - 1; i++) {
             tempPixie = [PPPixie getRandomPixie];
             int tRow = routeRow[i];
             int tCol = routeCol[i];
@@ -360,8 +327,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         PPPixie * targetPixie = [_data getPixieByRow:targetRow Col:targetCol];;
         targetPixie.status = PPStatusStop;
         
-        for (int i = 0; i < step; i++)
-        {
+        for (int i = 0; i < step; i++) {
             PPPixie * foodPixie = [_data getPixieByRow:routeRow[i] Col:routeCol[i]];
             [targetPixie eatPixie:foodPixie];
         }
@@ -376,22 +342,18 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }];
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     if (_status != STATUS_PLAY) return;
 }
 
 #pragma mark Scene Lifecycle
 
-- (void)update:(NSTimeInterval)currentTime
-{
+- (void)update:(NSTimeInterval)currentTime {
     [super update:currentTime];
     
-    if (_status == STATUS_PLAY)
-    {
+    if (_status == STATUS_PLAY) {
         NSTimeInterval timeLeft = [timeNode refreshCurrentTime];
-        if (timeLeft <= 0)
-        {
+        if (timeLeft <= 0) {
             // TODO:结算
             _status = STATUS_END;
             [self showStat];
@@ -402,15 +364,13 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 #pragma mark Custom
 
-- (void)refreshPixieAtRow:(int)row Col:(int)col
-{
+- (void)refreshPixieAtRow:(int)row Col:(int)col {
     PPPixie * tempPixie = [_data getPixieByRow:row Col:col];
     [pixieNode[row][col] refreshByPixie:tempPixie];
 }
 
 // 清零路径数据
-- (void)clearPath
-{
+- (void)clearPath {
     // 还原数据
     step = 0;
     
@@ -423,15 +383,13 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     [self refreshAllLand];
 }
 
-- (void)showStat
-{
+- (void)showStat {
     statNode = [[PPStatNode alloc] initWithScene:self Data:_data];
     statNode.position = CGPointMake(GAME_AREA_WIDTH / 2, GAME_AREA_HEIGHT / 2);
     [self addChild:statNode];
 }
 
-- (void)showAds
-{
+- (void)showAds {
     UIView * ads = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     [self.view addSubview:ads];
 }
