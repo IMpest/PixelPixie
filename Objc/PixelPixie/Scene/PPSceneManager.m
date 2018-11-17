@@ -31,6 +31,14 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
     return tutorScene;
 }
 
++ (SKScene *)getTutorialScene {
+    if (tutorScene == nil) {
+        tutorScene = [[PPTutorialScene alloc] init];
+        tutorScene.scaleMode = SKSceneScaleModeAspectFill;
+    }
+    return tutorScene;
+}
+
 + (SKScene *)getStartScene {
     if (startScene == nil) {
         startScene = [[PPStartScene alloc] init];

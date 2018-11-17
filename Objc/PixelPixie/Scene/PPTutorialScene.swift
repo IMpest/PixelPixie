@@ -11,29 +11,27 @@ import Foundation
 @objc
 class PPTutorialScene: SKScene {
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override init() {
+        super.init()
+        self.size = CGSize(width: CGFloat(GAME_AREA_WIDTH), height: CGFloat(GAME_AREA_HEIGHT))
+        self.backgroundColor = UIColor.yellow
+        
+        let backNode = SKSpriteNode(color: UIColor.gray, size: self.size)
+        backNode.anchorPoint = CGPoint(x: 0, y: 0)
+        self.addChild(backNode)
+        
+        let btReady = PPSpriteButton(color: UIColor.black, size: CGSize(width: 300, height: 100))
+        btReady.position = CGPoint(x: 100, y: 100)
+        btReady.setLabelWithText("READY!", with: UIColor.white)
+        btReady.addTarget(self, selector: #selector(btnDown), with: nil, for: PPButtonControlEvent.touchUpInside)
+        self.addChild(btReady)
+    }
+    
     func btnDown() {
         PPSceneManager.jump(from: self, to: PPSceneManager.getAnotherGameScene());
     }
 }
-
-//- (void)btnDown {
-//    [PPSceneManager jumpFrom:self To:[PPSceneManager getAnotherGameScene]];
-//}
-
-//- (instancetype)init {
-//    if (self = [super init]) {
-//        self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
-//        self.backgroundColor = [UIColor yellowColor];
-//
-//        SKSpriteNode * backNode = [[SKSpriteNode alloc] initWithColor:[UIColor grayColor] size:self.size];
-//        backNode.anchorPoint = CGPointMake(0, 0);
-//        [self addChild:backNode];
-//
-//        PPSpriteButton * btReady = [PPSpriteButton buttonWithColor:[UIColor blackColor] andSize:CGSizeMake(300, 100)];
-//        btReady.position = CGPointMake(100, 100);
-//        [btReady setLabelWithText:@"READY!" withColor:[UIColor whiteColor]];
-//        [btReady addTarget:self selector:@selector(btnDown) withObject:nil forControlEvent:PPButtonControlEventTouchUpInside];
-//        [self addChild:btReady];
-//    }
-//    return self;
-//}
