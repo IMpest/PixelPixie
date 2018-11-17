@@ -262,7 +262,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         // 添加吃的子动作
         SKAction * tAniKill = [SKAction runBlock:^{
             [pixieNode[eatRow][eatCol] clean];
-            [_data addScore:tpixie];
+            [self.data addScore:tpixie];
             [self refreshScore];
         }];
         SKAction * tAniMove = [SKAction moveTo:[PPNodeUtil getPointByRow:eatRow Col:eatCol] duration:EAT_SPEED];
@@ -291,9 +291,9 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         int targetRow = routeRow[step - 1];
         int targetCol = routeCol[step - 1];
         
-        tempPixie = [_data getPixieByRow:targetRow Col:targetCol];
-        [_data setPixie:[_data getPixieByRow:startRow Col:startCol] Row:targetRow Col:targetCol];
-        [_data setPixie:tempPixie Row:startRow Col:startCol];
+        tempPixie = [self.data getPixieByRow:targetRow Col:targetCol];
+        [self.data setPixie:[self.data getPixieByRow:startRow Col:startCol] Row:targetRow Col:targetCol];
+        [self.data setPixie:tempPixie Row:startRow Col:startCol];
         
         [self refreshPixieAtRow:targetRow Col:targetCol];
         [self refreshPixieAtRow:startRow Col:targetCol];
@@ -307,7 +307,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             int tRow = routeRow[i];
             int tCol = routeCol[i];
             
-            [_data setPixie:tempPixie Row:tRow Col:tCol];
+            [self.data setPixie:tempPixie Row:tRow Col:tCol];
             [self refreshPixieAtRow:tRow Col:tCol];
             
             // 落下动画
@@ -315,20 +315,20 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             PPPixieNode * tPixieNode = pixieNode[tRow][tCol];
             tPixieNode.alpha = 0;
             SKAction * high = [SKAction moveByX:0 y:dropHeight duration:0.0f];
-            SKAction * drop = [SKAction group:
-                               @[[SKAction moveByX:0 y:-dropHeight duration:0.2f],
-                                 [SKAction fadeAlphaTo:1 duration:0.2f]
-                                 ]];
+            SKAction * drop = [SKAction group:@[
+                                  [SKAction moveByX:0 y:-dropHeight duration:0.2f],
+                                  [SKAction fadeAlphaTo:1 duration:0.2f]
+                                ]];
             drop.timingMode = SKActionTimingEaseIn;
             [tPixieNode runAction:[SKAction sequence:@[high, drop]]];
         }
         
         // 主目标停吃 + 涨经验 + 升级
-        PPPixie * targetPixie = [_data getPixieByRow:targetRow Col:targetCol];;
+        PPPixie * targetPixie = [self.data getPixieByRow:targetRow Col:targetCol];;
         targetPixie.status = PPStatusStop;
         
         for (int i = 0; i < step; i++) {
-            PPPixie * foodPixie = [_data getPixieByRow:routeRow[i] Col:routeCol[i]];
+            PPPixie * foodPixie = [self.data getPixieByRow:routeRow[i] Col:routeCol[i]];
             [targetPixie eatPixie:foodPixie];
         }
         [self refreshPixieAtRow:targetRow Col:targetCol];
