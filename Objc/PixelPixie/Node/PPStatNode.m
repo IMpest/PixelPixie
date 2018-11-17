@@ -29,11 +29,11 @@ PPSpriteButton * btAgain, * bt2Menu;
 }
 
 - (void)click2Menu {
-    [PPSceneManager jumpFrom:parentScene To:[PPSceneManager getStartScene]];
+    [PPSceneManager jumpFrom:parentScene to:[PPSceneManager getStartScene]];
 }
 
 - (void)clickAgain {
-    [PPSceneManager jumpFrom:parentScene To:[PPSceneManager getAnotherGameScene]];
+    [PPSceneManager jumpFrom:parentScene to:[PPSceneManager getAnotherGameScene]];
     
 }
 

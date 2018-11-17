@@ -22,7 +22,6 @@
 // Scene
 #import "PPGameScene.h"
 #import "PPStartScene.h"
-#import "PPSceneManager.h"
 
 // Game Scene
 #define MAX_LEVEL 4

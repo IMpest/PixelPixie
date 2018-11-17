@@ -4,7 +4,6 @@
 @interface PPStartScene () {
     SKSpriteNode * node;
 }
-
 @end
 
 @implementation PPStartScene
@@ -12,15 +11,14 @@
 BOOL menuShown;
 
 - (instancetype)init {
-    if (self = [super init]) {
-        self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
+    if (self = [super initWithSize:CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT)]) {
+        self.scaleMode = SKSceneScaleModeAspectFill;
         
         node = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:self.frame.size];
         node.position = CGPointMake(0, 0);
         node.anchorPoint = CGPointMake(0, 0);
         [self addChild:node];
         [self playAction];
-        
     }
     return self;
 }
@@ -51,9 +49,7 @@ BOOL menuShown;
 }
 
 - (void)showMenu {
-    if (menuShown) {
-        return;
-    }
+    if (menuShown) return;
     
     menuShown = YES;
     
@@ -97,15 +93,15 @@ BOOL menuShown;
 }
 
 - (void)clickStart {
-    [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
+    [PPSceneManager jumpFrom:self to:[PPSceneManager getTutorScene]];
 }
 
 - (void)clickTutor {
-    [PPSceneManager jumpFrom:self To:[PPSceneManager getTutorScene]];
+    [PPSceneManager jumpFrom:self to:[PPSceneManager getTutorScene]];
 }
 
 - (void)clickAbout {
-    [PPSceneManager jumpFrom:self To:[PPSceneManager getAboutScene]];
+    [PPSceneManager jumpFrom:self to:[PPSceneManager getAboutScene]];
 }
 
 @end

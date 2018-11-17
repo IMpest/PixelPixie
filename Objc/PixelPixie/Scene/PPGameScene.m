@@ -31,9 +31,9 @@ int step;
 int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 - (instancetype)init {
-    if (self = [super init]) {
-        self.size = CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
-
+    if (self = [super initWithSize:CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT)]) {
+        self.scaleMode = SKSceneScaleModeAspectFill;
+        
         _data = [[PPData alloc] init];        
         _status = STATUS_PLAY;
         

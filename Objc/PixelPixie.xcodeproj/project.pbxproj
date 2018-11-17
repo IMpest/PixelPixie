@@ -270,7 +270,6 @@
 		19A38ABE1C5D04B100B5F81A /* PPSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A38AAB1C5D04B100B5F81A /* PPSpriteButton.m */; };
 		19A38ABF1C5D04B100B5F81A /* PPTimeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A38AAD1C5D04B100B5F81A /* PPTimeNode.m */; };
 		19A38AC01C5D04B100B5F81A /* PPGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A38AB01C5D04B100B5F81A /* PPGameScene.m */; };
-		19A38AC11C5D04B100B5F81A /* PPSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A38AB21C5D04B100B5F81A /* PPSceneManager.m */; };
 		19A38AC21C5D04B100B5F81A /* PPStartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A38AB41C5D04B100B5F81A /* PPStartScene.m */; };
 		19A38AC31C5D04B100B5F81A /* PPDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A38AB71C5D04B100B5F81A /* PPDataUtil.m */; };
 		19A38AC41C5D04B100B5F81A /* PPNodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A38AB91C5D04B100B5F81A /* PPNodeUtil.m */; };
@@ -556,8 +555,6 @@
 		19A38AAD1C5D04B100B5F81A /* PPTimeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTimeNode.m; sourceTree = "<group>"; };
 		19A38AAF1C5D04B100B5F81A /* PPGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPGameScene.h; sourceTree = "<group>"; };
 		19A38AB01C5D04B100B5F81A /* PPGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPGameScene.m; sourceTree = "<group>"; };
-		19A38AB11C5D04B100B5F81A /* PPSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSceneManager.h; sourceTree = "<group>"; };
-		19A38AB21C5D04B100B5F81A /* PPSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSceneManager.m; sourceTree = "<group>"; };
 		19A38AB31C5D04B100B5F81A /* PPStartScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPStartScene.h; sourceTree = "<group>"; };
 		19A38AB41C5D04B100B5F81A /* PPStartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPStartScene.m; sourceTree = "<group>"; };
 		19A38AB61C5D04B100B5F81A /* PPDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDataUtil.h; sourceTree = "<group>"; };
@@ -961,11 +958,9 @@
 				19A38AB01C5D04B100B5F81A /* PPGameScene.m */,
 				19A38AB31C5D04B100B5F81A /* PPStartScene.h */,
 				19A38AB41C5D04B100B5F81A /* PPStartScene.m */,
-				19B3DCC0219FFDFE0057DB9E /* PPTutorialScene.swift */,
 				19B3DCC221A0144C0057DB9E /* PPAboutScene.swift */,
+				19B3DCC0219FFDFE0057DB9E /* PPTutorialScene.swift */,
 				19B3DCC421A016730057DB9E /* PPSceneManager.swift */,
-				19A38AB11C5D04B100B5F81A /* PPSceneManager.h */,
-				19A38AB21C5D04B100B5F81A /* PPSceneManager.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1302,7 +1297,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19A38AC11C5D04B100B5F81A /* PPSceneManager.m in Sources */,
 				19A38ABB1C5D04B100B5F81A /* PPPixie.m in Sources */,
 				19A3889F1C5D02D100B5F81A /* GameViewController.m in Sources */,
 				19A38ABA1C5D04B100B5F81A /* PPData.m in Sources */,
