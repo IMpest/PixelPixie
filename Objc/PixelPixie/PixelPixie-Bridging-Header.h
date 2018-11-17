@@ -14,10 +14,8 @@
 
 // Node
 #import "PPSpriteButton.h"
-#import "PPPixieNode.h"
 #import "PPTimeNode.h"
 #import "PPScoreNode.h"
-#import "PPStatNode.h"
 
 // Scene
 #import "PPGameScene.h"

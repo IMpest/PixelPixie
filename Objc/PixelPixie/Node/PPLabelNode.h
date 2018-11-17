@@ -1,4 +1,0 @@
-
-@interface PPLabelNode : SKLabelNode
-
-@end
