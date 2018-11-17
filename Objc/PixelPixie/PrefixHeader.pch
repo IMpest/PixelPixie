@@ -5,6 +5,8 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
+#import "PixelPixie-Swift.h"
+
 // Model
 #import "PPPixie.h"
 #import "PPData.h"
