@@ -25,14 +25,6 @@ static SKScene *gameScene, *gameScenePrev, *tutorScene, *startScene, *aboutScene
 
 + (SKScene *)getTutorScene {
     if (tutorScene == nil) {
-        tutorScene = [[PPTutorScene alloc] init];
-        tutorScene.scaleMode = SKSceneScaleModeAspectFill;
-    }
-    return tutorScene;
-}
-
-+ (SKScene *)getTutorialScene {
-    if (tutorScene == nil) {
         tutorScene = [[PPTutorialScene alloc] init];
         tutorScene.scaleMode = SKSceneScaleModeAspectFill;
     }

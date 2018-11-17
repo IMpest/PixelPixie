@@ -7,8 +7,6 @@
 
 + (SKScene *)getTutorScene;
 
-+ (SKScene *)getTutorialScene;
-
 + (SKScene *)getStartScene;
 
 + (SKScene *)getAboutScene;

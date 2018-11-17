@@ -1,4 +1,0 @@
-
-@interface PPAboutScene : SKScene
-
-@end

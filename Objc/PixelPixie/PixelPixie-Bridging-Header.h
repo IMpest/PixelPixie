@@ -1,6 +1,3 @@
-//
-//  Use this file to import your target's public headers that you would like to expose to Swift.
-//
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -24,12 +21,10 @@
 
 // Scene
 #import "PPGameScene.h"
-#import "PPTutorScene.h"
 #import "PPStartScene.h"
-#import "PPAboutScene.h"
 #import "PPSceneManager.h"
 
-// game scene
+// Game Scene
 #define MAX_LEVEL 4
 #define MAX_LEVEL_BEGIN 2
 #define MAX_ELEMENT 3
@@ -62,7 +57,7 @@
 #define FRAME_SPEED 0.1f
 #define EAT_SPEED 0.5f
 
-// time node
+// Time Node
 #define TIMEZONE_WIDTH 312
 #define TIMEZONE_HEIGHT 14
 

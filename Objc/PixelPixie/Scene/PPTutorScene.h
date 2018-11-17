@@ -1,4 +1,0 @@
-
-@interface PPTutorScene : SKScene
-
-@end
