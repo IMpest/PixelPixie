@@ -6,7 +6,7 @@
 //  Copyright © 2018年 silver6wings. All rights reserved.
 //
 
-@objc
+@objcMembers
 class PPSceneManager: NSObject {
     
     static let tutorScene: SKScene = PPTutorialScene()

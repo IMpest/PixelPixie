@@ -6,7 +6,7 @@
 //  Copyright © 2018年 silver6wings. All rights reserved.
 //
 
-@objc
+@objcMembers
 class PPScoreNode: PPLabelNode {
     
     required init?(coder: NSCoder) {

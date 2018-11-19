@@ -6,7 +6,7 @@
 //  Copyright © 2018年 silver6wings. All rights reserved.
 //
 
-@objc
+@objcMembers
 class PPStatNode: SKSpriteNode {
     weak var parentScene: SKScene? = nil
     var btAgain: PPSpriteButton = PPSpriteButton(color: UIColor.red, size: CGSize(width: 100, height: 50))

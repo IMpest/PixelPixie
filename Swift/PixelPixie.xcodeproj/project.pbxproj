@@ -1002,7 +1002,7 @@
 					19A3888E1C5D02D100B5F81A = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = QGW73K39GN;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = "";
 					};
 				};
 			};
@@ -1448,7 +1448,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PixelPixie/PixelPixie-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
 			};
 			name = Debug;
@@ -1464,7 +1465,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.psycube.PixelPixie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PixelPixie/PixelPixie-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
 			};
 			name = Release;

@@ -6,7 +6,7 @@
 //  Copyright © 2018年 ！. All rights reserved.
 //
 
-@objc
+@objcMembers
 class PPPixieNode: SKSpriteNode {
     
     required init?(coder: NSCoder) {
