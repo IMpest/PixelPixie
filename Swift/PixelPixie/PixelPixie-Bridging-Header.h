@@ -15,7 +15,6 @@
 // Node
 #import "PPSpriteButton.h"
 #import "PPTimeNode.h"
-#import "PPScoreNode.h"
 
 // Scene
 #import "PPGameScene.h"
