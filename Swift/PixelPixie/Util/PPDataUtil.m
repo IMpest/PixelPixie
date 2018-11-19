@@ -36,20 +36,20 @@
     return result;
 }
 
-+ (NSString *)strElement:(Element)element {
++ (NSString *)strElement:(PPElement)element {
     switch (element) {
-        case ElementNone:
+        case PPElementNone:
             return @"";
-        case ElementPlant:
+        case PPElementPlant:
             return @"plant";
-        case ElementFire:
+        case PPElementFire:
             return @"fire";
-        case ElementWater:
+        case PPElementWater:
             return @"water";
     }
 }
 
-+ (NSString *)strStatus:(Status)status
++ (NSString *)strStatus:(PPStatus)status
 {
     switch (status) {
         case PPStatusNone:
