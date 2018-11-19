@@ -1,0 +1,4 @@
+
+@interface PPStartScene : SKScene
+
+@end

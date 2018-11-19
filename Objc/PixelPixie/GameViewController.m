@@ -17,7 +17,7 @@
     skView.showsNodeCount = YES;
     skView.showsDrawCount = YES;
     
-    [skView presentScene:[PPSceneManager getStartScene]];
+    [skView presentScene:[PPSceneManager getStartScene]];    
 }
 
 - (void)didReceiveMemoryWarning {
