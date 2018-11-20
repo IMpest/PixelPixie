@@ -276,6 +276,7 @@
 		19EB1E8021A0355300744899 /* PPLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB1E7F21A0355300744899 /* PPLabelNode.swift */; };
 		19EB1E8221A036D100744899 /* PPStatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB1E8121A036D100744899 /* PPStatNode.swift */; };
 		2FB6B9DD21A2613400E7D4C3 /* PPScoreNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB6B9DC21A2613400E7D4C3 /* PPScoreNode.swift */; };
+		2FDE172121A3CA0B00BD7369 /* PPPixie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDE172021A3CA0B00BD7369 /* PPPixie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -563,6 +564,7 @@
 		19EB1E7F21A0355300744899 /* PPLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPLabelNode.swift; sourceTree = "<group>"; };
 		19EB1E8121A036D100744899 /* PPStatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPStatNode.swift; sourceTree = "<group>"; };
 		2FB6B9DC21A2613400E7D4C3 /* PPScoreNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPScoreNode.swift; sourceTree = "<group>"; };
+		2FDE172021A3CA0B00BD7369 /* PPPixie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPPixie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -920,6 +922,7 @@
 		19A38AA01C5D04B100B5F81A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2FDE172021A3CA0B00BD7369 /* PPPixie.swift */,
 				19A38AA31C5D04B100B5F81A /* PPPixie.h */,
 				19A38AA41C5D04B100B5F81A /* PPPixie.m */,
 				19A38AA11C5D04B100B5F81A /* PPData.h */,
@@ -1300,6 +1303,7 @@
 				19A388941C5D02D100B5F81A /* main.m in Sources */,
 				19A38ABE1C5D04B100B5F81A /* PPSpriteButton.m in Sources */,
 				19A38AC31C5D04B100B5F81A /* PPDataUtil.m in Sources */,
+				2FDE172121A3CA0B00BD7369 /* PPPixie.swift in Sources */,
 				19B3DCC321A0144C0057DB9E /* PPAboutScene.swift in Sources */,
 				19A38AC21C5D04B100B5F81A /* PPStartScene.m in Sources */,
 				19A38AC01C5D04B100B5F81A /* PPGameScene.m in Sources */,
