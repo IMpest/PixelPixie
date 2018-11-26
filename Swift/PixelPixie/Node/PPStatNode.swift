@@ -39,5 +39,4 @@ class PPStatNode: SKSpriteNode {
     func clickAgain() -> Void {
         PPSceneManager.jump(from: self.parentScene!, to: PPSceneManager.getAnotherGameScene())
     }
-    
 }

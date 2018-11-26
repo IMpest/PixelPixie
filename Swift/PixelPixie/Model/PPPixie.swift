@@ -73,8 +73,5 @@ class PPPixie: NSObject {
     func getBouns() -> Int {
         return 2 * self.levelCur
     }
-    
-    
-    
 }
 
