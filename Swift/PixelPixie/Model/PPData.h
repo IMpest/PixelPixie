@@ -1,4 +1,6 @@
 
+@class PPPixie;
+
 @interface PPData : NSObject {
     NSInteger score;
     NSInteger scoreMax;

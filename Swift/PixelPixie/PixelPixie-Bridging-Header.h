@@ -4,7 +4,6 @@
 #import <SpriteKit/SpriteKit.h>
 
 // Model
-#import "PPPixie.h"
 #import "PPData.h"
 
 // Util
