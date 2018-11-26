@@ -34,7 +34,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     if (self = [super initWithSize:CGSizeMake(GAME_AREA_WIDTH, GAME_AREA_HEIGHT)]) {
         self.scaleMode = SKSceneScaleModeAspectFill;
         
-        _data = [[PPData alloc] init];        
+        _data = [[PPData alloc] init];
         _status = STATUS_PLAY;
         
         // 地板
@@ -135,7 +135,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     int row = [PPNodeUtil getRowByPostion:point];
     int col = [PPNodeUtil getColByPostion:point];
-
+    
     if (row < 0 || row > MAX_ROW || col < 0 || col > MAX_COLUMN) return;
     
     // 暂停时间
@@ -316,9 +316,9 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             tPixieNode.alpha = 0;
             SKAction * high = [SKAction moveByX:0 y:dropHeight duration:0.0f];
             SKAction * drop = [SKAction group:@[
-                                  [SKAction moveByX:0 y:-dropHeight duration:0.2f],
-                                  [SKAction fadeAlphaTo:1 duration:0.2f]
-                                ]];
+                                                [SKAction moveByX:0 y:-dropHeight duration:0.2f],
+                                                [SKAction fadeAlphaTo:1 duration:0.2f]
+                                                ]];
             drop.timingMode = SKActionTimingEaseIn;
             [tPixieNode runAction:[SKAction sequence:@[high, drop]]];
         }
@@ -395,3 +395,4 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 }
 
 @end
+
