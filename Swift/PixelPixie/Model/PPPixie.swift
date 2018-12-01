@@ -6,8 +6,6 @@
 //  Copyright © 2018年 silver6wings. All rights reserved.
 //
 
-import Foundation
-
 @objc
 public enum PPElement: Int {
     case None = 0, Fire, Water, Plant

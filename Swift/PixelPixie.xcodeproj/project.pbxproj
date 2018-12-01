@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1920C68C1C5D088F00CCA493 /* Mouse.otf in Resources */ = {isa = PBXBuildFile; fileRef = 19A38AC51C5D051B00B5F81A /* Mouse.otf */; };
+		192AEB1121B2BC6B00100079 /* PPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192AEB1021B2BC6B00100079 /* PPData.swift */; };
 		192CC2E61C7822030000295B /* PPStorageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 192CC2E51C7822030000295B /* PPStorageUtil.m */; };
 		1998786A21A02BEA003A61A1 /* PPPixieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1998786921A02BEA003A61A1 /* PPPixieNode.swift */; };
 		19A388941C5D02D100B5F81A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A388931C5D02D100B5F81A /* main.m */; };
@@ -279,6 +280,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		192AEB1021B2BC6B00100079 /* PPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPData.swift; sourceTree = "<group>"; };
 		192CC2E41C7822030000295B /* PPStorageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPStorageUtil.h; sourceTree = "<group>"; };
 		192CC2E51C7822030000295B /* PPStorageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPStorageUtil.m; sourceTree = "<group>"; };
 		1998786921A02BEA003A61A1 /* PPPixieNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPixieNode.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 			isa = PBXGroup;
 			children = (
 				2FDE172021A3CA0B00BD7369 /* PPPixie.swift */,
+				192AEB1021B2BC6B00100079 /* PPData.swift */,
 				19A38AA11C5D04B100B5F81A /* PPData.h */,
 				19A38AA21C5D04B100B5F81A /* PPData.m */,
 			);
@@ -1313,6 +1316,7 @@
 				19EB1E8021A0355300744899 /* PPLabelNode.swift in Sources */,
 				19B3DCC521A016730057DB9E /* PPSceneManager.swift in Sources */,
 				19EB1E8221A036D100744899 /* PPStatNode.swift in Sources */,
+				192AEB1121B2BC6B00100079 /* PPData.swift in Sources */,
 				192CC2E61C7822030000295B /* PPStorageUtil.m in Sources */,
 				19A38AC41C5D04B100B5F81A /* PPNodeUtil.m in Sources */,
 			);

@@ -22,6 +22,14 @@
     }
 }
 
+- (void)clearLand {
+    for (int i = 0; i < MAX_ROW; i++) {
+        for (int j = 0; j < MAX_COLUMN; j++) {
+            [self setLand:LAND_START Row:i Col:j];
+        }
+    }
+}
+
 - (NSInteger)getScore {
     return score;
 }
@@ -31,7 +39,7 @@
 }
 
 - (void)countCombo:(int)combo {
-    if (combo > comboMax) {
+    if (comboMax < combo) {
         comboMax = combo;
     }
 }
@@ -43,14 +51,6 @@
 
 - (void)setLand:(NSInteger)value Row:(int)row Col:(int)colunm {
     land[row][colunm] = value;
-}
-
-- (void)clearLand {
-    for (int i = 0; i < MAX_ROW; i++) {
-        for (int j = 0; j < MAX_COLUMN; j++) {
-            [self setLand:LAND_START Row:i Col:j];
-        }
-    }
 }
 
 - (PPPixie *)getPixieByRow:(int)row Col:(int)col {
