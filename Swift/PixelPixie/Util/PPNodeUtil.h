@@ -1,13 +1,15 @@
 
+@class PPPixie;
+
 @interface PPNodeUtil : NSObject
 
-+ (CGPoint)getNodePositionByRow:(int)row COL:(int)column;
++ (CGPoint)getNodePositionByRow:(int)row col:(int)column;
 
 + (int)getRowByPostion:(CGPoint)pos;
 
 + (int)getColByPostion:(CGPoint)pos;
 
-+ (CGPoint)getPointByRow:(int)row Col:(int)col;
++ (CGPoint)getPointByRow:(int)row col:(int)col;
 
 + (SKAction *)getActionByPixie:(PPPixie *)pixie;
 

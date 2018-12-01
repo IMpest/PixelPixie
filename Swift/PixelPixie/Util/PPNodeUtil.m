@@ -3,7 +3,7 @@
 
 @implementation PPNodeUtil
 
-+ (CGPoint)getNodePositionByRow:(int)row COL:(int)column {
++ (CGPoint)getNodePositionByRow:(int)row col:(int)column {
     return CGPointMake(column * BLOCK_WIDTH, (MAX_ROW - row - 1) * BLOCK_HEIGHT + LAND_TOP_BOTTOM);
 }
 
@@ -19,7 +19,7 @@
     return (int)(pos.x/BLOCK_WIDTH);
 }
 
-+ (CGPoint)getPointByRow:(int)row Col:(int)col {
++ (CGPoint)getPointByRow:(int)row col:(int)col {
     if (row < 0 || row > MAX_ROW ||
         col < 0 || row > MAX_COLUMN) {
         return CGPointZero;

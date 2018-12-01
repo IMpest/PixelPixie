@@ -1,4 +1,6 @@
 
+@class PPPixie;
+
 @interface PPDataUtil : NSObject
 
 + (NSString *)getPicByMap:(int)map;

@@ -40,8 +40,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         // 地板
         for (int i = 0; i < MAX_ROW; i++) {
             for (int j = 0; j < MAX_COLUMN; j++) {
-                landNode[i][j] = [SKSpriteNode spriteNodeWithImageNamed:[PPDataUtil getPicByMap:[_data getLandByRow:i Col:j]]];
-                [landNode[i][j] setPosition:[PPNodeUtil getNodePositionByRow:i COL:j]];
+                landNode[i][j] = [SKSpriteNode spriteNodeWithImageNamed:[PPDataUtil getPicByMap:[_data getLandWithRow:i col:j]]];
+                [landNode[i][j] setPosition:[PPNodeUtil getNodePositionByRow:i col:j]];
                 [landNode[i][j] setSize:CGSizeMake(BLOCK_WIDTH, BLOCK_HEIGHT)];
                 [landNode[i][j] setAnchorPoint:CGPointMake(0.0f, 0.0f)];
                 [self addChild:landNode[i][j]];
@@ -72,8 +72,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         // 宠物Node
         for (int i = 0; i < MAX_ROW; i++) {
             for (int j = 0; j < MAX_COLUMN; j++) {
-                pixieNode[i][j] = [[PPPixieNode alloc] initWithPixie:[_data getPixieByRow:i Col:j]];
-                [pixieNode[i][j] setPosition:[PPNodeUtil getNodePositionByRow:i COL:j]];
+                pixieNode[i][j] = [[PPPixieNode alloc] initWithPixie:[_data getPixieWithRow:i col:j]];
+                [pixieNode[i][j] setPosition:[PPNodeUtil getNodePositionByRow:i col:j]];
                 [self addChild:pixieNode[i][j]];
             }
         }
@@ -98,8 +98,9 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 - (void)initLand {
     for (int i = 0; i < MAX_ROW; i++) {
         for (int j = 0; j < MAX_COLUMN; j++) {
-            [_data getLandByRow:i Col:j];
-            landNode[i][j] = [SKSpriteNode spriteNodeWithImageNamed:[PPDataUtil getPicByMap:[_data getLandByRow:i Col:j]]];
+            int8_t land = [_data getLandWithRow:i col:j];
+            NSString * picName = [PPDataUtil getPicByMap:land];
+            landNode[i][j] = [SKSpriteNode spriteNodeWithImageNamed:picName];
         }
     }
 }
@@ -107,14 +108,14 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 - (void)refreshAllLand {
     for (int i = 0; i < MAX_ROW; i++) {
         for (int j = 0; j < MAX_COLUMN; j++) {
-            [self refreshLandByRow:i Col:j];
+            [self refreshLandByRow:i col:j];
         }
     }
 }
 
-- (void)refreshLandByRow:(int)row Col:(int)col {
+- (void)refreshLandByRow:(int)row col:(int)col {
     if (landNode[row][col] != nil) {
-        SKTexture * t = [SKTexture textureWithImageNamed:[PPDataUtil getPicByMap:[_data getLandByRow:row Col:col]]];
+        SKTexture * t = [SKTexture textureWithImageNamed:[PPDataUtil getPicByMap:[_data getLandWithRow:row col:col]]];
         [landNode[row][col] setTexture:t];
     }
 }
@@ -145,7 +146,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     // 存储路径起点
     startRow = row;
     startCol = col;
-    startPixie = [_data getPixieByRow:startRow Col:startCol];
+    startPixie = [_data getPixieWithRow:startRow col:startCol];
     
     if (startPixie.levelCur <= 1) return;
     
@@ -175,19 +176,19 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     }
     
     // 宠物可以被吃验证
-    PPPixie * curPixie = [_data getPixieByRow:curRow Col:curCol];
+    PPPixie * curPixie = [_data getPixieWithRow:curRow col:curCol];
     if (curPixie.levelCur >= startPixie.levelCur || curPixie.element == startPixie.element) return;
     
     // 空格没有被划过验证
-    int curLand = [_data getLandByRow:curRow Col:curCol];
+    int curLand = [_data getLandWithRow:curRow col:curCol];
     if (curLand != 0) return;
     
     // 修改宠物状态
     curPixie.status = PPStatusFear;
-    [self refreshPixieAtRow:curRow Col:curCol];
+    [self refreshPixieAtRow:curRow col:curCol];
     
     // 修改地面
-    int prevLand = [_data getLandByRow:prevRow Col:prevCol];
+    int prevLand = [_data getLandWithRow:prevRow col:prevCol];
     if (prevLand >= 0) {
         if (curRow == prevRow) {
             // 同一行
@@ -213,11 +214,11 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             }
         }
         
-        [_data setLand:curLand Row:curRow Col:curCol];
-        [_data setLand:prevLand Row:prevRow Col:prevCol];
+        [_data setLand:curLand row:curRow col:curCol];
+        [_data setLand:prevLand row:prevRow col:prevCol];
         
-        [self refreshLandByRow:curRow Col:curCol];
-        [self refreshLandByRow:prevRow Col:prevCol];
+        [self refreshLandByRow:curRow col:curCol];
+        [self refreshLandByRow:prevRow col:prevCol];
         
         prevRow = curRow;
         prevCol = curCol;
@@ -248,16 +249,16 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
     
     // 准备吃的动作
     NSMutableArray * eatAction = [NSMutableArray array];
-    [eatAction addObject:[SKAction moveTo:[PPNodeUtil getPointByRow:startRow Col:startCol] duration:0.0f]];
+    [eatAction addObject:[SKAction moveTo:[PPNodeUtil getPointByRow:startRow col:startCol] duration:0.0f]];
     
     for (int i = 1; i < step; i++) {
         int eatRow = routeRow[i];
         int eatCol = routeCol[i];
         
         // 被吃的宠物变成球
-        PPPixie * tpixie = [_data getPixieByRow:eatRow Col:eatCol];
+        PPPixie * tpixie = [_data getPixieWithRow:eatRow col:eatCol];
         tpixie.status = PPStatusBall;
-        [self refreshPixieAtRow:eatRow Col:eatCol];
+        [self refreshPixieAtRow:eatRow col:eatCol];
         
         // 添加吃的子动作
         SKAction * tAniKill = [SKAction runBlock:^{
@@ -265,7 +266,7 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             [self.data addScore:tpixie];
             [self refreshScore];
         }];
-        SKAction * tAniMove = [SKAction moveTo:[PPNodeUtil getPointByRow:eatRow Col:eatCol] duration:EAT_SPEED];
+        SKAction * tAniMove = [SKAction moveTo:[PPNodeUtil getPointByRow:eatRow col:eatCol] duration:EAT_SPEED];
         
         [eatAction addObject:tAniKill];
         [eatAction addObject:tAniMove];
@@ -291,12 +292,12 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         int targetRow = routeRow[step - 1];
         int targetCol = routeCol[step - 1];
         
-        tempPixie = [self.data getPixieByRow:targetRow Col:targetCol];
-        [self.data setPixie:[self.data getPixieByRow:startRow Col:startCol] Row:targetRow Col:targetCol];
-        [self.data setPixie:tempPixie Row:startRow Col:startCol];
+        tempPixie = [self.data getPixieWithRow:targetRow col:targetCol];
+        [self.data setPixie:[self.data getPixieWithRow:startRow col:startCol] row:targetRow col:targetCol];
+        [self.data setPixie:tempPixie row:startRow col:startCol];
         
-        [self refreshPixieAtRow:targetRow Col:targetCol];
-        [self refreshPixieAtRow:startRow Col:targetCol];
+        [self refreshPixieAtRow:targetRow col:targetCol];
+        [self refreshPixieAtRow:startRow col:targetCol];
         
         // 替身消失
         [pixieNodeTemp removeFromParent];
@@ -307,8 +308,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
             int tRow = routeRow[i];
             int tCol = routeCol[i];
             
-            [self.data setPixie:tempPixie Row:tRow Col:tCol];
-            [self refreshPixieAtRow:tRow Col:tCol];
+            [self.data setPixie:tempPixie row:tRow col:tCol];
+            [self refreshPixieAtRow:tRow col:tCol];
             
             // 落下动画
             int dropHeight = 50;
@@ -324,14 +325,14 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
         }
         
         // 主目标停吃 + 涨经验 + 升级
-        PPPixie * targetPixie = [self.data getPixieByRow:targetRow Col:targetCol];;
+        PPPixie * targetPixie = [self.data getPixieWithRow:targetRow col:targetCol];;
         targetPixie.status = PPStatusStop;
         
         for (int i = 0; i < step; i++) {
-            PPPixie * foodPixie = [self.data getPixieByRow:routeRow[i] Col:routeCol[i]];
+            PPPixie * foodPixie = [self.data getPixieWithRow:routeRow[i] col:routeCol[i]];
             [targetPixie eatPixie:foodPixie];
         }
-        [self refreshPixieAtRow:targetRow Col:targetCol];
+        [self refreshPixieAtRow:targetRow col:targetCol];
         
         // 增加奖励时间
         NSTimeInterval bounsTime = 5;
@@ -364,8 +365,8 @@ int routeRow[MAX_BLOCK], routeCol[MAX_BLOCK];
 
 #pragma mark Custom
 
-- (void)refreshPixieAtRow:(int)row Col:(int)col {
-    PPPixie * tempPixie = [_data getPixieByRow:row Col:col];
+- (void)refreshPixieAtRow:(int)row col:(int)col {
+    PPPixie * tempPixie = [_data getPixieWithRow:row col:col];
     [pixieNode[row][col] refreshByPixie:tempPixie];
 }
 
