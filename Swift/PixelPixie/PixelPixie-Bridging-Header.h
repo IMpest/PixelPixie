@@ -3,9 +3,6 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-// Model
-#import "PPData.h"
-
 // Util
 #import "PPNodeUtil.h"
 #import "PPDataUtil.h"
